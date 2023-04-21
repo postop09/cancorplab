@@ -1,11 +1,50 @@
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useEffect, useState } from "react";
+import Search from "@/components/Home/Search";
+import Title from "@/components/Home/Title";
+import Info from "@/components/Home/Info";
 
 export default function Home() {
+  const [id, setId] = useState();
+
+  useEffect(() => {
+    // req();
+  }, []);
+
+  const req = async () => {
+    const res = await fetch(
+      "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/%EB%82%AD%EB%A7%8C%EC%9C%BC%EB%A1%9C%20%EC%82%B4%EC%9E%90?api_key=RGAPI-63a214bf-2590-4661-b6df-128d44c4020f",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    );
+
+    const json = await res.json();
+    console.log(json.id);
+
+    if (json.id) {
+      req2(json.id);
+    }
+  };
+
+  const req2 = async (id: string) => {
+    const res2 = await fetch(
+      `https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/AnM3Pdf74y6RihxuCq7TtH9Q5aVpWB9FRi-w-1szALtkvA?api_key=RGAPI-63a214bf-2590-4661-b6df-128d44c4020f`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    );
+    const json2 = await res2.json();
+    console.log(json2);
+  };
+
   return (
     <>
       <Head>
@@ -15,98 +54,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{" "}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
+        <Title />
+        <Search />
+        <Info />
       </main>
     </>
   );
