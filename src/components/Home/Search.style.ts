@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { COLOR } from "@/styles/style";
 
 const borderRole = keyframes`
   0% {
@@ -37,7 +38,7 @@ export const Wrapper = styled.div`
   width: 100%;
 `;
 
-export const SearchWrapper = styled.div`
+export const SearchWrapper = styled.form`
   position: relative;
   display: flex;
   box-shadow: 0 3px 5px 1px black;
@@ -62,11 +63,12 @@ export const Input = styled.input`
   padding: 0 20px;
   font-family: "Pretendard", sans-serif;
   font-size: 1.2rem;
+  letter-spacing: 3px;
   z-index: 10;
 
   &:focus {
     transition: all 0.5s;
-    outline-color: goldenrod;
+    outline-color: ${COLOR};
   }
 `;
 
@@ -75,4 +77,10 @@ export const Button = styled.button`
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   width: 70px;
+  cursor: pointer;
+  
+  &:focus {
+    transition: all 0.5s;
+    outline-color: ${COLOR};
+  }
 `;

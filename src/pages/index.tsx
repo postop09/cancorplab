@@ -1,50 +1,10 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
-import { useEffect, useState } from "react";
 import Search from "@/components/Home/Search";
 import Title from "@/components/Home/Title";
 import Info from "@/components/Home/Info";
 
 export default function Home() {
-  const [id, setId] = useState();
-
-  useEffect(() => {
-    // req();
-  }, []);
-
-  const req = async () => {
-    const res = await fetch(
-      "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/%EB%82%AD%EB%A7%8C%EC%9C%BC%EB%A1%9C%20%EC%82%B4%EC%9E%90?api_key=RGAPI-63a214bf-2590-4661-b6df-128d44c4020f",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-    );
-
-    const json = await res.json();
-    console.log(json.id);
-
-    if (json.id) {
-      req2(json.id);
-    }
-  };
-
-  const req2 = async (id: string) => {
-    const res2 = await fetch(
-      `https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/AnM3Pdf74y6RihxuCq7TtH9Q5aVpWB9FRi-w-1szALtkvA?api_key=RGAPI-63a214bf-2590-4661-b6df-128d44c4020f`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-    );
-    const json2 = await res2.json();
-    console.log(json2);
-  };
-
   return (
     <>
       <Head>
