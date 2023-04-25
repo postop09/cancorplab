@@ -1,34 +1,29 @@
 import React, { FormEvent, useState } from "react";
 import * as S from "./Search.style";
 import styles from "@/styles/Home.module.css";
-import { RIOT_API_KEY } from "@/const/API";
-import customAxios from "@/lib/customAxios";
+import useGetSummoner from "@/hooks/useGetSummoner";
+import useGetMastery from "@/hooks/useGetMastery";
+import { useRouter } from "next/router";
 
 const Search = () => {
-  const [userName, setUserName] = useState("");
+  const { getSummoner, userName, setUserName } = useGetSummoner();
+  const { getMastery } = useGetMastery();
+  const [masteryList, setMasteryList] = useState([]);
+  const router = useRouter();
 
-  const req2 = async (id: string) => {
-    const { data } = await customAxios.get(
-      `/champion-mastery/v4/champion-masteries/by-summoner/${id}?api_key=${RIOT_API_KEY}`,
-    );
-
-    console.log(data);
-  };
-
-  const req = async () => {
-    const { data } = await customAxios.get(
-      `/summoner/v4/summoners/by-name/${userName}?api_key=${RIOT_API_KEY}`,
-    );
-    console.log(data);
-
-    if (data.id) {
-      req2(data.id);
-    }
-  };
-
-  const handleSearch = (e: FormEvent<HTMLFormElement>) => {
+  // 두글자 이하일 경우 검색 불가능
+  const handleSearch = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    req();
+    try {
+      const summoner = await getSummoner();
+      const mastery = await getMastery(summoner.id);
+      if (mastery) {
+        setMasteryList(mastery);
+        await router.push("/mastery");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -39,8 +34,8 @@ const Search = () => {
           type="search"
           placeholder="소환사 이름을 검색해주세요."
           onChange={(e) => setUserName(e.target.value)}
+          value={userName}
         />
-        {/*<S.Box></S.Box>*/}
         <S.Button type="submit">검색아이콘</S.Button>
       </S.SearchWrapper>
     </S.Wrapper>
