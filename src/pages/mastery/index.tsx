@@ -1,7 +1,8 @@
 import React from "react";
-import { MasteryInfo } from "@/type/riotAPI";
+import { MasteryFullData } from "@/type/masteryData";
 import { useRouter } from "next/router";
 import useGetMastery from "@/hooks/useGetMastery";
+import styled from "styled-components";
 
 const Index = () => {
   const router = useRouter();
@@ -12,12 +13,12 @@ const Index = () => {
     <div>
       <h1>차트를 보여줄 거에요</h1>
       <div>내가 플레이 한 챔피언 수 : {masteryList.length}</div>
-      {masteryList.map((mastery: MasteryInfo) => {
+      {masteryList.map((mastery: MasteryFullData) => {
         return (
-          <p key={mastery.championId}>
-            <strong>{mastery.championId}</strong>
+          <Wrapper key={mastery.championId}>
+            <strong>{mastery.name}</strong>
             <small>{mastery.championPoints}</small>
-          </p>
+          </Wrapper>
         );
       })}
     </div>
@@ -25,3 +26,18 @@ const Index = () => {
 };
 
 export default Index;
+
+const Wrapper = styled.p`
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin-bottom: 1rem;
+  strong {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+  }
+
+  small {
+    font-size: 1.2rem;
+  }
+`;

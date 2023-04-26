@@ -1,3 +1,5 @@
+import { CustomChampion } from "@/type/championData";
+
 export type MasteryInfo = {
   championId: number;
   championLevel: number;
@@ -9,3 +11,5 @@ export type MasteryInfo = {
   summonerId: string;
   tokensEarned: number;
 };
+
+export type MasteryFullData = MasteryInfo & CustomChampion;
