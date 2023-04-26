@@ -1,14 +1,13 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useContext } from "react";
 import * as S from "./Search.style";
 import styles from "@/styles/Home.module.css";
 import useGetSummoner from "@/hooks/useGetSummoner";
-import useGetMastery from "@/hooks/useGetMastery";
 import { useRouter } from "next/router";
+import { MasteryContext } from "@/context/masteryContext";
 
 const Search = () => {
   const { getSummoner, userName, setUserName } = useGetSummoner();
-  const { getMastery } = useGetMastery();
-  const [masteryList, setMasteryList] = useState([]);
+  const { setMasteryList } = useContext(MasteryContext);
   const router = useRouter();
 
   // 두글자 이하일 경우 검색 불가능
@@ -16,10 +15,11 @@ const Search = () => {
     e.preventDefault();
     try {
       const summoner = await getSummoner();
-      const mastery = await getMastery(summoner.id);
-      if (mastery) {
-        setMasteryList(mastery);
-        await router.push("/mastery");
+      if (summoner) {
+        await router.push({
+          pathname: "/mastery",
+          query: { summoner: summoner.id },
+        });
       }
     } catch (err) {
       console.log(err);
