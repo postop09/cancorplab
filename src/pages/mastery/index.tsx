@@ -3,6 +3,7 @@ import { MasteryFullData } from "@/type/masteryData";
 import { useRouter } from "next/router";
 import useGetMastery from "@/hooks/useGetMastery";
 import styled from "styled-components";
+import Chart from "@/components/Mastery/Chart";
 
 const Index = () => {
   const router = useRouter();
@@ -12,7 +13,8 @@ const Index = () => {
   return (
     <div>
       <h1>차트를 보여줄 거에요</h1>
-      <div>내가 플레이 한 챔피언 수 : {masteryList.length}</div>
+      <Chart />
+      {/*<div>내가 플레이 한 챔피언 수 : {masteryList.length}</div>*/}
       {masteryList.map((mastery: MasteryFullData) => {
         return (
           <Wrapper key={mastery.championId}>
