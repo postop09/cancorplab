@@ -16,22 +16,34 @@ const Index = () => {
       {masteryList.map((mastery: MasteryFullData) => {
         return (
           <Wrapper key={mastery.championId}>
-            <strong>{mastery.name}</strong>
-            <small>{mastery.championPoints}</small>
+            {/*<Image*/}
+            {/*  src={`/assets/img/${mastery.image.full}`}*/}
+            {/*  alt=""*/}
+            {/*  width={40}*/}
+            {/*  height={40}*/}
+            {/*/>*/}
+            {/*<TxtWrapper>*/}
+            {/*  <strong>{mastery.name}</strong>*/}
+            {/*  <small>{mastery.championPoints}</small>*/}
+            {/*</TxtWrapper>*/}
           </Wrapper>
         );
       })}
     </div>
   );
 };
-
 export default Index;
 
-const Wrapper = styled.p`
+const Wrapper = styled.div`
+  display: flex;
+`;
+
+const TxtWrapper = styled.p`
   display: flex;
   justify-content: space-between;
   width: 300px;
   margin-bottom: 1rem;
+
   strong {
     font-size: 1.5rem;
     margin-right: 1rem;
