@@ -1,29 +1,32 @@
 import React, { useEffect, useRef } from "react";
-import { select, svg } from "d3";
+import { range, scaleLinear, select, svg } from "d3";
+import { MasteryFullData } from "@/type/masteryData";
 
-const Chart = () => {
+const Chart = ({ data }: { data: MasteryFullData[] }) => {
   const svgRef = useRef(null);
-  const width = 20;
-  const height = 20;
+  console.log(data);
 
   useEffect(() => {
     createChart();
-  }, []);
+  }, [data]);
 
   const createChart = () => {
     const SVG = select(svgRef.current);
+    const championPoints = data.map((item) => item.championPoints);
+    const I = range(championPoints.length).filter((i) => championPoints[i] > 0);
+    console.log(I);
 
     SVG.selectAll("circle")
-      .data([23, 13, 56, 26, 11])
+      .data(data)
       .join(
         (enter) => enter.append("circle"),
         (update) => update.attr("class", "updated"),
         (exit) => exit.remove(),
       )
       .attr("id", "category_2")
-      .attr("r", (v) => v / 4)
-      .attr("cx", (v) => v)
-      .attr("cy", (v) => v)
+      .attr("r", 8)
+      .attr("cx", (v) => scaleLinear().domain())
+      .attr("cy", (v) => v.championPoints)
       .attr("fill", "#3bbc9b")
       .attr("fill-opacity", 0.1)
       .attr("stroke", "#3bbc9b")

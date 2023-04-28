@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import useGetMastery from "@/hooks/useGetMastery";
 import styled from "styled-components";
 import Chart from "@/components/Mastery/Chart";
+import Image from "next/image";
 
 const Index = () => {
   const router = useRouter();
@@ -13,21 +14,21 @@ const Index = () => {
   return (
     <div>
       <h1>차트를 보여줄 거에요</h1>
-      <Chart />
-      {/*<div>내가 플레이 한 챔피언 수 : {masteryList.length}</div>*/}
+      <Chart data={masteryList} />
+      <div>내가 플레이 한 챔피언 수 : {masteryList.length}</div>
       {masteryList.map((mastery: MasteryFullData) => {
         return (
           <Wrapper key={mastery.championId}>
-            {/*<Image*/}
-            {/*  src={`/assets/img/${mastery.image.full}`}*/}
-            {/*  alt=""*/}
-            {/*  width={40}*/}
-            {/*  height={40}*/}
-            {/*/>*/}
-            {/*<TxtWrapper>*/}
-            {/*  <strong>{mastery.name}</strong>*/}
-            {/*  <small>{mastery.championPoints}</small>*/}
-            {/*</TxtWrapper>*/}
+            <Image
+              src={`/assets/img/${mastery.image.full}`}
+              alt=""
+              width={40}
+              height={40}
+            />
+            <TxtWrapper>
+              <strong>{mastery.name}</strong>
+              <small>{mastery.championPoints}</small>
+            </TxtWrapper>
           </Wrapper>
         );
       })}
