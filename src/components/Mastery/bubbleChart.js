@@ -9,6 +9,8 @@ import {
   range,
   scaleOrdinal,
   schemeTableau10,
+  select,
+  zoom,
 } from "d3";
 
 const bubbleChart = (
@@ -70,64 +72,97 @@ const bubbleChart = (
     .attr("font-family", "sans-serif")
     .attr("text-anchor", "middle");
 
-  const leaf = svg
+  const g = svg.append("g");
+
+  const zoomed = ({ transform }) => {
+    g.attr("transform", transform);
+  };
+
+  svg.call(zoom().scaleExtent([1, 8]).on("zoom", zoomed));
+
+  svg
+    .append("defs")
+    .selectAll("pattern")
+    .data(root.leaves())
+    .join("pattern")
+    .attr("id", (d) => {
+      if (data[d.data]) {
+        return `${data[d.data].championId}`;
+      }
+    })
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", 1)
+    .attr("height", 1)
+    .attr("patternContentUnits", "objectBoundingBox")
+    .append("image")
+    .attr("href", (d) => {
+      if (data[d.data]) {
+        const backImg = data[d.data].image.full;
+        return `/assets/img/${backImg}`;
+      }
+    })
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", 1)
+    .attr("height", 1);
+
+  const leaf = g
     .selectAll("a")
     .data(root.leaves())
     .join("a")
     .attr("xlink:href", link == null ? null : (d, i) => link(D[d.data], i, data))
     .attr("target", link == null ? null : linkTarget)
     .attr("transform", (d) => `translate(${d.x},${d.y})`);
-  // .append("image")
-  // .attr("xlink:href", (d) => {
-  //   if (data[d.data]) {
-  //     const backImg = data[d.data].image.full;
-  //     console.log(backImg);
-  //     return `/assets/img/${backImg}`;
-  //   }
-  //   return d;
-  // });
-  // `/assets/img/${data[d.data].image.full}`
 
   leaf
     .append("circle")
+    .attr("class", "img_circle")
     .attr("stroke", stroke)
     .attr("stroke-width", strokeWidth)
     .attr("stroke-opacity", strokeOpacity)
-    .attr("fill", "#ddd")
+    .attr("fill", (d) => {
+      if (data[d.data]) {
+        return `url(#${data[d.data].championId})`;
+      }
+    })
     .attr("fill-opacity", fillOpacity)
-    .attr("r", (d) => d.r);
-  // .append("image")
-  // .attr("xlink:href", (d) => {
-  //   if (data[d.data]) {
-  //     const backImg = data[d.data].image.full;
-  //     console.log(backImg);
-  //     return `/assets/img/${backImg}`;
-  //   }
-  //   return d;
-  // });
+    .attr("r", (d) => d.r)
+    .on("mouseover", function () {
+      select(this).attr("fill-opacity", 1);
+    })
+    .on("mouseout", function () {
+      select(this).attr("fill-opacity", fillOpacity);
+    })
+    .on("click", (d) => {})
+    .on("zoom", () => {
+      console.log("zoom");
+    });
 
-  if (T) leaf.append("title").text((d) => T[d.data]);
+  if (T)
+    leaf.append("title").text((d) => {
+      return `${T[d.data]}\n${d.value}`;
+    });
 
   if (L) {
     // A unique identifier for clip paths (to avoid conflicts).
-    const uid = `O-${Math.random().toString(16).slice(2)}`;
-
-    leaf
-      .append("clipPath")
-      .attr("id", (d) => `${uid}-clip-${d.data}`)
-      .append("circle")
-      .attr("r", (d) => d.r);
-
-    leaf
-      .append("text")
-      .attr("clip-path", (d) => `url(${new URL(`#${uid}-clip-${d.data}`, location)})`)
-      .selectAll("tspan")
-      .data((d) => `${L[d.data]}`.split(/\n/g))
-      .join("tspan")
-      .attr("x", 0)
-      .attr("y", (d, i, D) => `${i - D.length / 2 + 0.85}em`)
-      .attr("fill-opacity", (d, i, D) => (i === D.length - 1 ? 0.7 : null))
-      .text((d) => d);
+    // const uid = `O-${Math.random().toString(16).slice(2)}`;
+    // leaf
+    //   .append("clipPath")
+    //   .attr("id", (d) => `${uid}-clip-${d.data}`)
+    //   .append("circle")
+    //   .attr("r", (d) => d.r);
+    //
+    // leaf
+    //   .append("text")
+    //   .attr("clip-path", (d) => `url(${new URL(`#${uid}-clip-${d.data}`, location)})`)
+    //   .selectAll("tspan")
+    //   .data((d) => `${L[d.data]}`.split(/\n/g))
+    //   .join("tspan")
+    //   .attr("x", 0)
+    //   .attr("y", (d, i, D) => `${i - D.length / 2 + 0.85}em`)
+    //   .attr("fill-opacity", (d, i, D) => (i === D.length - 1 ? 0.7 : null))
+    //   .text((d) => d);
   }
 
   return Object.assign(svg.node(), { scales: { color } });
