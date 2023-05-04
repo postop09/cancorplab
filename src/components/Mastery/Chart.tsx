@@ -11,7 +11,6 @@ const Chart = ({ data }: { data: MasteryFullData[] }) => {
     if (data.length !== 0) {
       createChart();
     }
-    console.log(bubbleChart(data));
   }, [data]);
 
   const createChart = () => {
@@ -60,6 +59,7 @@ const Chart = ({ data }: { data: MasteryFullData[] }) => {
       {/*    width: 1100,*/}
       {/*  })}*/}
       {/*</>*/}
+      <div className="tooltip"></div>
     </div>
   );
 };

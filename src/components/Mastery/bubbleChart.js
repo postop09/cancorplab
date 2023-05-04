@@ -130,14 +130,13 @@ const bubbleChart = (
     .attr("r", (d) => d.r)
     .on("mouseover", function () {
       select(this).attr("fill-opacity", 1);
+      const $tooltip = document.querySelector(".tooltip");
+      console.log($tooltip);
     })
     .on("mouseout", function () {
       select(this).attr("fill-opacity", fillOpacity);
     })
-    .on("click", (d) => {})
-    .on("zoom", () => {
-      console.log("zoom");
-    });
+    .on("click", (d) => {});
 
   if (T)
     leaf.append("title").text((d) => {
