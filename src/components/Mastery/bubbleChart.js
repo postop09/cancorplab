@@ -142,11 +142,6 @@ const bubbleChart = (
     })
     .on("click", (d) => {});
 
-  // if (T)
-  //   leaf.append("title").text((d) => {
-  //     return `${T[d.data]}\n${d.value}`;
-  //   });
-
   const showTooltip = (name, point, pointRatio, lastPlayTime) => {
     const $tooltip = document.querySelector(".tooltip");
     const $championName = $tooltip.querySelector(".championName");
@@ -159,29 +154,33 @@ const bubbleChart = (
     $championPoint.textContent = point;
     $championPointRatio.textContent = "1%";
     $championLastPlayTime.textContent = lastPlayDate;
-    // $tooltip.style.opacity = show ? 1 : 0;
   };
 
-  if (L) {
-    // A unique identifier for clip paths (to avoid conflicts).
-    // const uid = `O-${Math.random().toString(16).slice(2)}`;
-    // leaf
-    //   .append("clipPath")
-    //   .attr("id", (d) => `${uid}-clip-${d.data}`)
-    //   .append("circle")
-    //   .attr("r", (d) => d.r);
-    //
-    // leaf
-    //   .append("text")
-    //   .attr("clip-path", (d) => `url(${new URL(`#${uid}-clip-${d.data}`, location)})`)
-    //   .selectAll("tspan")
-    //   .data((d) => `${L[d.data]}`.split(/\n/g))
-    //   .join("tspan")
-    //   .attr("x", 0)
-    //   .attr("y", (d, i, D) => `${i - D.length / 2 + 0.85}em`)
-    //   .attr("fill-opacity", (d, i, D) => (i === D.length - 1 ? 0.7 : null))
-    //   .text((d) => d);
-  }
+  // if (T)
+  //   leaf.append("title").text((d) => {
+  //     return `${T[d.data]}\n${d.value}`;
+  //   });
+
+  // if (L) {
+  //   A unique identifier for clip paths (to avoid conflicts).
+  //   const uid = `O-${Math.random().toString(16).slice(2)}`;
+  //   leaf
+  //     .append("clipPath")
+  //     .attr("id", (d) => `${uid}-clip-${d.data}`)
+  //     .append("circle")
+  //     .attr("r", (d) => d.r);
+  //
+  //   leaf
+  //     .append("text")
+  //     .attr("clip-path", (d) => `url(${new URL(`#${uid}-clip-${d.data}`, location)})`)
+  //     .selectAll("tspan")
+  //     .data((d) => `${L[d.data]}`.split(/\n/g))
+  //     .join("tspan")
+  //     .attr("x", 0)
+  //     .attr("y", (d, i, D) => `${i - D.length / 2 + 0.85}em`)
+  //     .attr("fill-opacity", (d, i, D) => (i === D.length - 1 ? 0.7 : null))
+  //     .text((d) => d);
+  // }
 
   return Object.assign(svg.node(), { scales: { color } });
 };
