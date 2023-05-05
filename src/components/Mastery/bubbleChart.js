@@ -128,20 +128,39 @@ const bubbleChart = (
     })
     .attr("fill-opacity", fillOpacity)
     .attr("r", (d) => d.r)
-    .on("mouseover", function () {
+    .on("mouseover", function (e) {
       select(this).attr("fill-opacity", 1);
-      const $tooltip = document.querySelector(".tooltip");
-      console.log($tooltip);
+      const dataIndex = e.target.__data__.data;
+      const championName = data[dataIndex].name;
+      const championPoint = data[dataIndex].championPoints;
+      const championLastPlayTime = data[dataIndex].lastPlayTime;
+      console.log(data);
+      showTooltip(championName, championPoint, 0, championLastPlayTime);
     })
     .on("mouseout", function () {
       select(this).attr("fill-opacity", fillOpacity);
     })
     .on("click", (d) => {});
 
-  if (T)
-    leaf.append("title").text((d) => {
-      return `${T[d.data]}\n${d.value}`;
-    });
+  // if (T)
+  //   leaf.append("title").text((d) => {
+  //     return `${T[d.data]}\n${d.value}`;
+  //   });
+
+  const showTooltip = (name, point, pointRatio, lastPlayTime) => {
+    const $tooltip = document.querySelector(".tooltip");
+    const $championName = $tooltip.querySelector(".championName");
+    const $championPoint = $tooltip.querySelector(".championPoint");
+    const $championPointRatio = $tooltip.querySelector(".championPointRatio");
+    const $championLastPlayTime = $tooltip.querySelector(".championLastPlayTime");
+    const lastPlayDate = new Date(lastPlayTime).toLocaleString();
+
+    $championName.textContent = name;
+    $championPoint.textContent = point;
+    $championPointRatio.textContent = "1%";
+    $championLastPlayTime.textContent = lastPlayDate;
+    // $tooltip.style.opacity = show ? 1 : 0;
+  };
 
   if (L) {
     // A unique identifier for clip paths (to avoid conflicts).

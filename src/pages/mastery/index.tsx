@@ -14,7 +14,6 @@ const Index = () => {
   return (
     <div>
       <h1>차트를 보여줄 거에요</h1>
-      <div>내가 플레이 한 챔피언 수 : {masteryList.length}</div>
       <Chart data={masteryList} />
       {masteryList.map((mastery: MasteryFullData) => {
         return (
