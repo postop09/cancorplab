@@ -12,7 +12,7 @@ const Index = () => {
   const { masteryList } = useGetMastery(query.summoner as string);
 
   return (
-    <div>
+    <>
       <h1>차트를 보여줄 거에요</h1>
       <Chart data={masteryList} />
       {masteryList.map((mastery: MasteryFullData) => {
@@ -31,7 +31,7 @@ const Index = () => {
           </Wrapper>
         );
       })}
-    </div>
+    </>
   );
 };
 export default Index;

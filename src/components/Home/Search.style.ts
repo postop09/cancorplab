@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import { COLOR } from "@/styles/style";
 
 const borderRole = keyframes`
   0% {
@@ -68,7 +67,7 @@ export const Input = styled.input`
 
   &:focus {
     transition: all 0.5s;
-    outline-color: ${COLOR};
+    outline-color: ${({ theme }) => theme.COLOR.original};
   }
 `;
 
@@ -78,9 +77,10 @@ export const Button = styled.button`
   border-bottom-right-radius: 30px;
   width: 70px;
   cursor: pointer;
-  
+  background: #686868;
+
   &:focus {
     transition: all 0.5s;
-    outline-color: ${COLOR};
+    outline-color: ${({ theme }) => theme.COLOR.original};
   }
 `;

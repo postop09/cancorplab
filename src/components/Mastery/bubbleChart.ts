@@ -55,9 +55,9 @@ const bubbleChart = <T>(
 
   const createTranslate = (ele) => {
     return ele
-      .selectAll("a")
+      .selectAll("g")
       .data(root.leaves())
-      .join("a")
+      .join("g")
       .attr("transform", (d) => `translate(${d.x},${d.y})`);
   };
 
