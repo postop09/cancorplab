@@ -45,6 +45,7 @@ const bubbleChart = (
   const V = data.map((item) => item.championPoints);
   const G = group == null ? null : map(data, group);
   const I = range(V.length).filter((i) => V[i] > 0);
+  const V_SUM = V.reduce((total, item) => total + item);
 
   // Unique the groups.
   if (G && groups === undefined) groups = I.map((i) => G[i]);
@@ -134,7 +135,7 @@ const bubbleChart = (
       const championName = data[dataIndex].name;
       const championPoint = data[dataIndex].championPoints;
       const championLastPlayTime = data[dataIndex].lastPlayTime;
-      console.log(data);
+      // console.log(data);
       showTooltip(championName, championPoint, 0, championLastPlayTime);
     })
     .on("mouseout", function () {
@@ -152,7 +153,7 @@ const bubbleChart = (
 
     $championName.textContent = name;
     $championPoint.textContent = point;
-    $championPointRatio.textContent = "1%";
+    $championPointRatio.textContent = ((point / V_SUM) * 100).toFixed(3) + "%";
     $championLastPlayTime.textContent = lastPlayDate;
   };
 
