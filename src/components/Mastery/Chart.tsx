@@ -15,8 +15,6 @@ const Chart = ({ data }: { data: MasteryFullData[] }) => {
 
   const createChart = () => {
     const svg = bubbleChart(data, {
-      label: (d) => d.name,
-      title: (d) => d.name,
       stroke: "#daa520",
       strokeWidth: 1.5,
       width: 1100,
@@ -34,7 +32,7 @@ const Chart = ({ data }: { data: MasteryFullData[] }) => {
         <Count>{data.length}</Count>
         <CountTxt>플레이 챔피언</CountTxt>
       </CountWrapper>
-      <Dl className="tooltip">
+      <Dl className="championInfo">
         <dt>이름</dt>
         <dd className="championName"></dd>
         <dt>점수</dt>
@@ -65,7 +63,6 @@ const Wrapper = styled.div`
 `;
 
 const SvgWrapper = styled.div`
-  border: 2px solid gold;
   text-align: center;
 `;
 
