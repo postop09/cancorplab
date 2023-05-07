@@ -11,14 +11,19 @@ const TEXT = {
 
 const COLOR = {
   original: "goldenrod",
-  secondOriginal: "#BB264910",
+  contents: "#14172a",
   white: "#FFFFFF",
   secondWhite: "#AEAEAE",
   txtInfo: "#5E5E5E",
 };
 
 const SIZE = {
-  info: ".9rem",
+  max: "2.4rem",
+  xxl: "2rem",
+  xl: "1.6rem",
+  lg: "1.2rem",
+  sm: "0.8rem",
+  xs: "0.6rem",
 };
 
 const ROUND = {

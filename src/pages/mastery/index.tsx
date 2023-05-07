@@ -5,6 +5,7 @@ import useGetMastery from "@/hooks/useGetMastery";
 import styled from "styled-components";
 import Chart from "@/components/Mastery/Chart";
 import Image from "next/image";
+import Head from "next/head";
 
 const Index = () => {
   const router = useRouter();
@@ -13,7 +14,9 @@ const Index = () => {
 
   return (
     <>
-      <h1>차트를 보여줄 거에요</h1>
+      <Head>
+        <title>CANLab</title>
+      </Head>
       <Chart data={masteryList} />
       {masteryList.map((mastery: MasteryFullData) => {
         return (

@@ -1,16 +1,25 @@
 import React from "react";
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/theme";
+import { useRouter } from "next/router";
+import Footer from "@/components/layout/Footer";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  // TODO - mainPage 에서는 Header hide.
+  const router = useRouter();
+
+  const headerPaddingStyle = () => {
+    if (router.pathname !== "/") {
+      return { paddingTop: "75px" };
+    }
+    return;
+  };
+
   return (
     <ThemeProvider theme={theme}>
-      <Header />
-      <main>{children}</main>
-      <Footer />
+      {router.pathname !== "/" && <Header />}
+      <main style={headerPaddingStyle()}>{children}</main>
+      {router.pathname !== "/" && <Footer />}
     </ThemeProvider>
   );
 };

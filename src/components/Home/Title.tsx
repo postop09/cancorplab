@@ -1,15 +1,12 @@
 import React from "react";
 import styles from "@/styles/Home.module.css";
 import styled from "styled-components";
+import Logo from "@/components/common/Logo";
 
 const Title = () => {
   return (
     <div className={styles.description}>
-      <div>
-        <a href="#" target="_blank" rel="noopener noreferrer">
-          By<SiteName>CANLab</SiteName>
-        </a>
-      </div>
+      <Logo />
       <p>
         Get started by&nbsp;
         <code className={styles.code}>LOL-champ</code>

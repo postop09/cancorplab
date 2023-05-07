@@ -11,4 +11,5 @@ export type BubbleChartOption = {
   stroke?: string; // a static stroke around the bubbles
   strokeWidth?: number; // the stroke width around the bubbles, if any
   strokeOpacity?: number; // the stroke opacity around the bubbles, if any
+  backgroundColor?: string;
 };

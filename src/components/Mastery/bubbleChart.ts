@@ -16,6 +16,7 @@ const bubbleChart = <T>(
     stroke,
     strokeWidth,
     strokeOpacity,
+    backgroundColor,
   }: BubbleChartOption | {} = {},
 ) => {
   const V = data.map((item) => item.championPoints);
@@ -33,7 +34,12 @@ const bubbleChart = <T>(
       .attr("viewBox", [-marginLeft, -marginTop, width, height])
       .attr(
         "style",
-        "max-width: 100%; height: auto; height: intrinsic; border: 2px solid goldenrod;",
+        `max-width: 100%; 
+        height: auto; 
+        height: intrinsic; 
+        border-radius: 10px; 
+        box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, 0.7);
+        background: ${backgroundColor}`,
       )
       .attr("fill", "currentColor")
       .attr("font-size", 10)
