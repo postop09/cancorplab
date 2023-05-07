@@ -1,23 +1,18 @@
 import React from "react";
 import styles from "@/styles/Home.module.css";
-import styled from "styled-components";
 import Logo from "@/components/common/Logo";
+import * as S from "./Title.style";
 
 const Title = () => {
   return (
-    <div className={styles.description}>
+    <S.TitleWrapper className={styles.description}>
       <Logo />
       <p>
         Get started by&nbsp;
         <code className={styles.code}>LOL-champ</code>
       </p>
-    </div>
+    </S.TitleWrapper>
   );
 };
 
 export default Title;
-
-const SiteName = styled.span`
-  font-size: 1.8rem;
-  font-weight: bold;
-`;

@@ -59,7 +59,6 @@ const useGetMastery = (id: string) => {
   const setMastery = async () => {
     const ChampionAndMasteryList = await getChampionAndMasteryList();
     if (ChampionAndMasteryList) {
-      console.log(ChampionAndMasteryList);
       setMasteryList(ChampionAndMasteryList);
     }
   };

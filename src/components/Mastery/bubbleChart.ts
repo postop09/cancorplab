@@ -85,7 +85,7 @@ const bubbleChart = <T>(
       .attr("href", (d) => {
         if (data[d.data]) {
           const backImg = data[d.data].image.full;
-          return `/assets/img/${backImg}`;
+          return `/assets/img/champion_icon/${backImg}`;
         }
       })
       .attr("width", 1)

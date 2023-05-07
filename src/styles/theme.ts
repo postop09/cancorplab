@@ -34,11 +34,17 @@ const ROUND = {
   xl: "100%",
 };
 
+const WIDTH = {
+  pc: "1100px",
+  mobile: "420px",
+};
+
 const theme = {
   TEXT,
   COLOR,
   SIZE,
   ROUND,
+  WIDTH,
 };
 
 export default theme;

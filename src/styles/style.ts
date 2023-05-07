@@ -1,14 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'Pretendard';
-    src: url(../assets/font/PretendardVariable.ttf) format('truetype');
-  }
-  
   * {
-    box-sizing: border-box;
     font-family: "Pretendard", "sans-serif";
+    box-sizing: border-box;
   }
 
   html, body, div, span, applet, object, iframe,
@@ -44,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     line-height: 1;
+    background: #000000b3;
   }
 
   menu, ol, ul, li {
@@ -67,7 +63,7 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
-    //color: black;
+    color: inherit;
     cursor: pointer;
   }
 
@@ -79,6 +75,12 @@ const GlobalStyle = createGlobalStyle`
 
   img {
     display: block;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      color-scheme: dark;
+    }
   }
 `;
 
