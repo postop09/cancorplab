@@ -1,6 +1,5 @@
 import React, { FormEvent, useContext } from "react";
 import * as S from "./Search.style";
-import styles from "@/styles/Home.module.css";
 import useGetSummoner from "@/hooks/useGetSummoner";
 import { useRouter } from "next/router";
 import { MasteryContext } from "@/context/masteryContext";
@@ -22,13 +21,12 @@ const Search = () => {
         });
       }
     } catch (err) {
-      console.log(err);
+      alert("일치하는 소환사가 없습니다.");
     }
   };
 
   return (
-    <S.Wrapper className={styles.center}>
-      {/*<h1>LOL champ</h1>*/}
+    <S.Wrapper>
       <S.SearchWrapper onSubmit={(e) => handleSearch(e)}>
         <S.Input
           type="search"

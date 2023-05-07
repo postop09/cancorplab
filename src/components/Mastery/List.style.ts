@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const wrapper = styled.div`
+  margin-top: 4rem;
+`;
+
+export const ItemWrapper = styled.div`
   display: flex;
 `;
 
