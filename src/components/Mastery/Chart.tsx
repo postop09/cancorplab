@@ -21,7 +21,9 @@ const Chart = ({ data }: { data: MasteryFullData[] }) => {
       backgroundColor: theme.COLOR.contents,
     });
 
+    // @ts-ignore
     if (!svgRef.current.childNodes.length) {
+      // @ts-ignore
       svgRef.current.append(svg);
     }
   };

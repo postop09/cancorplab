@@ -13,3 +13,14 @@ export type BubbleChartOption = {
   strokeOpacity?: number; // the stroke opacity around the bubbles, if any
   backgroundColor?: string;
 };
+
+export type SvgPatternData = {
+  data: number;
+  depth: number;
+  height: number;
+  parent: any;
+  r: number;
+  value: number;
+  x: number;
+  y: number;
+};

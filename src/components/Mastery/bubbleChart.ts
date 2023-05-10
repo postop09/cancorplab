@@ -1,8 +1,9 @@
 import { create, hierarchy, pack, range, select, zoom } from "d3";
-import { BubbleChartOption } from "@/type/bubbleChart.type";
+import { BubbleChartOption, SvgPatternData } from "@/type/bubbleChart.type";
+import { MasteryFullData } from "@/type/masteryData";
 
-const bubbleChart = <T>(
-  data: T[],
+const bubbleChart = (
+  data: MasteryFullData[],
   {
     width = 640,
     height = width,
@@ -17,7 +18,7 @@ const bubbleChart = <T>(
     strokeWidth,
     strokeOpacity,
     backgroundColor,
-  }: BubbleChartOption | {} = {},
+  }: BubbleChartOption,
 ) => {
   const V = data.map((item) => item.championPoints);
   const I = range(V.length).filter((i) => V[i] > 0);
@@ -25,7 +26,8 @@ const bubbleChart = <T>(
 
   const root = pack()
     .size([width - marginLeft - marginRight, height - marginTop - marginBottom])
-    .padding(padding)(hierarchy({ children: I }).sum((i) => V[i]));
+    // @ts-ignore
+    .padding(padding)(hierarchy({ children: I }).sum((i: any) => V[i]));
 
   const createSvg = () => {
     return create("svg")
@@ -50,21 +52,22 @@ const bubbleChart = <T>(
   const createZoom = () => {
     const g = svg.append("g");
 
-    const zoomed = ({ transform }) => {
+    const zoomed = ({ transform }: any) => {
       g.attr("transform", transform);
     };
 
+    // @ts-ignore
     svg.call(zoom().scaleExtent([1, 8]).on("zoom", zoomed));
 
     return g;
   };
 
-  const createTranslate = (ele) => {
+  const createTranslate = (ele: any) => {
     return ele
       .selectAll("g")
       .data(root.leaves())
       .join("g")
-      .attr("transform", (d) => `translate(${d.x},${d.y})`);
+      .attr("transform", (d: any) => `translate(${d.x},${d.y})`);
   };
 
   const defineImage = () => {
@@ -73,7 +76,8 @@ const bubbleChart = <T>(
       .selectAll("pattern")
       .data(root.leaves())
       .join("pattern")
-      .attr("id", (d) => {
+      // @ts-ignore
+      .attr("id", (d: SvgPatternData) => {
         if (data[d.data]) {
           return `${data[d.data].championId}`;
         }
@@ -82,7 +86,8 @@ const bubbleChart = <T>(
       .attr("height", 1)
       .attr("patternContentUnits", "objectBoundingBox")
       .append("image")
-      .attr("href", (d) => {
+      // @ts-ignore
+      .attr("href", (d: SvgPatternData) => {
         if (data[d.data]) {
           const backImg = data[d.data].image.full;
           return `/assets/img/champion_icon/${backImg}`;
@@ -92,42 +97,44 @@ const bubbleChart = <T>(
       .attr("height", 1);
   };
 
-  const createImg = (ele) => {
+  const createImg = (ele: any) => {
     ele
       .append("circle")
       .attr("class", "img_circle")
       .attr("stroke", stroke)
       .attr("stroke-width", strokeWidth)
       .attr("stroke-opacity", strokeOpacity)
-      .attr("fill", (d) => {
+      .attr("fill", (d: SvgPatternData) => {
         if (data[d.data]) {
           return `url(#${data[d.data].championId})`;
         }
       })
       .attr("fill-opacity", fillOpacity)
-      .attr("r", (d) => d.r)
-      .on("mouseover", function (e) {
+      .attr("r", (d: SvgPatternData) => d.r)
+      .on("mouseover", function (e: any) {
+        // @ts-ignore
         select(this).attr("fill-opacity", 1);
         showChampionInfo(e.target.__data__.data);
       })
       .on("mouseout", function () {
+        // @ts-ignore
         select(this).attr("fill-opacity", fillOpacity);
       });
   };
 
   const showChampionInfo = (dataIndex: number) => {
-    const $championInfo = document.querySelector(".championInfo");
-    const $championName = $championInfo.querySelector(".championName");
-    const $championPoint = $championInfo.querySelector(".championPoint");
-    const $championPointRatio = $championInfo.querySelector(".championPointRatio");
-    const $championLastPlayTime = $championInfo.querySelector(".championLastPlayTime");
+    const $championInfo = document.querySelector(".championInfo")!;
+    const $championName = $championInfo.querySelector(".championName")!;
+    const $championPoint = $championInfo.querySelector(".championPoint")!;
+    const $championPointRatio = $championInfo.querySelector(".championPointRatio")!;
+    const $championLastPlayTime = $championInfo.querySelector(".championLastPlayTime")!;
     const name = data[dataIndex].name;
     const point = data[dataIndex].championPoints;
     const lastPlayTimeUTC = data[dataIndex].lastPlayTime;
     const lastPlayDate = new Date(lastPlayTimeUTC).toLocaleString();
 
     $championName.textContent = name;
-    $championPoint.textContent = point;
+    $championPoint.textContent = point + "";
     $championPointRatio.textContent = ((point / V_SUM) * 100).toFixed(3) + "%";
     $championLastPlayTime.textContent = lastPlayDate;
   };
