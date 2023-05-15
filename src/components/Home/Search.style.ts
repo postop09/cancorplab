@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import { COLOR } from "@/styles/style";
 
 const borderRole = keyframes`
   0% {
@@ -34,8 +33,43 @@ export const Box = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-width: 600px;
   width: 100%;
+  padding: 4rem 0;
+
+  &::before,
+  &::after {
+    content: "";
+    left: 50%;
+    position: absolute;
+    filter: blur(45px);
+    transform: translateZ(0);
+  }
+
+  &::before {
+    background: linear-gradient(
+      to bottom right,
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0.3)
+    );
+    border-radius: 50%;
+    width: 480px;
+    height: 360px;
+    margin-left: -400px;
+  }
+
+  &::after {
+    background: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+    width: 240px;
+    height: 180px;
+    z-index: -1;
+  }
 `;
 
 export const SearchWrapper = styled.form`
@@ -68,7 +102,7 @@ export const Input = styled.input`
 
   &:focus {
     transition: all 0.5s;
-    outline-color: ${COLOR};
+    outline-color: ${({ theme }) => theme.COLOR.original};
   }
 `;
 
@@ -78,9 +112,10 @@ export const Button = styled.button`
   border-bottom-right-radius: 30px;
   width: 70px;
   cursor: pointer;
-  
+  background: #686868;
+
   &:focus {
     transition: all 0.5s;
-    outline-color: ${COLOR};
+    outline-color: ${({ theme }) => theme.COLOR.original};
   }
 `;
