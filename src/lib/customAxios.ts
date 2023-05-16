@@ -14,7 +14,7 @@ const customAxios = (method: Method, url: string, data?: any) => {
     url: url + `?api_key=${RIOT_API_KEY}`,
     data,
   }).catch((reason) => {
-    console.log(reason);
+    throw new Error(reason);
   });
 };
 

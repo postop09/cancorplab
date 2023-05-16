@@ -27,7 +27,7 @@ const bubbleChart = (
   const root = pack()
     .size([width - marginLeft - marginRight, height - marginTop - marginBottom])
     // @ts-ignore
-    .padding(padding)(hierarchy({ children: I }).sum((i: any) => V[i]));
+    .padding(padding)(hierarchy({ children: I }).sum((i) => V[i]));
 
   const createSvg = () => {
     return create("svg")
@@ -67,7 +67,7 @@ const bubbleChart = (
       .selectAll("g")
       .data(root.leaves())
       .join("g")
-      .attr("transform", (d: any) => `translate(${d.x},${d.y})`);
+      .attr("transform", (d: SvgPatternData) => `translate(${d.x},${d.y})`);
   };
 
   const defineImage = () => {
