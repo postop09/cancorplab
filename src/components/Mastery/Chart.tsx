@@ -29,7 +29,7 @@ const Chart = ({ data }: { data: MasteryFullData[] }) => {
   };
 
   return (
-    <div>
+    <section>
       <S.SvgWrapper>
         <div ref={svgRef}></div>
         <S.CountWrapper>
@@ -55,7 +55,7 @@ const Chart = ({ data }: { data: MasteryFullData[] }) => {
           <dd className="championLastPlayTime">-</dd>
         </div>
       </S.Dl>
-    </div>
+    </section>
   );
 };
 

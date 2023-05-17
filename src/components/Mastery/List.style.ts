@@ -1,25 +1,44 @@
 import styled from "styled-components";
 
-export const wrapper = styled.div`
-  margin-top: 4rem;
+export const Wrapper = styled.section`
+  margin-top: 0.5rem;
+  text-align: center;
 `;
 
-export const ItemWrapper = styled.div`
-  display: flex;
+export const ListWrapper = styled.ul`
+  border: 2px solid gold;
+  border-radius: ${({ theme }) => theme.ROUND.md};
+  max-width: 1100px;
+  margin: 0.5rem auto;
+  padding: 1rem;
+  background-color: ${({ theme }) => theme.COLOR.contents};
 `;
 
-export const TxtWrapper = styled.p`
+export const BtnShowList = styled.button`
+  border: 2px solid gold;
+  border-radius: ${({ theme }) => theme.ROUND.sm};
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background: ${({ theme }) => theme.COLOR.contents};
+`;
+
+export const ItemWrapper = styled.li`
   display: flex;
-  justify-content: space-between;
-  width: 300px;
-  margin-bottom: 1rem;
+  align-items: center;
+  border-radius: ${({ theme }) => theme.ROUND.sm};
+  padding: 0.5rem;
+
+  &:hover {
+    background-color: #222747;
+  }
 
   strong {
+    margin-left: 1rem;
     font-size: 1.5rem;
-    margin-right: 1rem;
   }
 
   small {
+    margin-left: auto;
     font-size: 1.2rem;
   }
 `;
