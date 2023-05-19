@@ -130,13 +130,15 @@ const bubbleChart = (
     const $championLastPlayTime = $championInfo.querySelector(".championLastPlayTime")!;
     const name = data[dataIndex].name;
     const point = data[dataIndex].championPoints;
-    const lastPlayTimeUTC = data[dataIndex].lastPlayTime;
-    const lastPlayDate = new Date(lastPlayTimeUTC).toLocaleString();
+    const lastPlayFullDate = new Date(data[dataIndex].lastPlayTime);
+    const year = lastPlayFullDate.getFullYear();
+    const month = lastPlayFullDate.getMonth() + 1;
+    const day = lastPlayFullDate.getDate();
 
     $championName.textContent = name;
     $championPoint.textContent = point + "";
     $championPointRatio.textContent = ((point / V_SUM) * 100).toFixed(3) + "%";
-    $championLastPlayTime.textContent = lastPlayDate;
+    $championLastPlayTime.textContent = `${year}.${month}.${day}`;
   };
 
   const svg = createSvg();

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MasteryFullData } from "@/type/masteryData";
 import * as S from "@/components/Mastery/List.style";
 import Image from "next/image";
+import { HideTitleH2 } from "@/styles/common";
 
 const List = ({ masteryList }: { masteryList: MasteryFullData[] }) => {
   const [isShow, setIsShow] = useState(false);
@@ -33,6 +34,7 @@ const List = ({ masteryList }: { masteryList: MasteryFullData[] }) => {
 
   return (
     <S.Wrapper>
+      <HideTitleH2>플레이 챔피언 별 숙련도 목록</HideTitleH2>
       <S.BtnShowList onClick={() => showList()}>
         {isShow ? "닫기" : "더보기"}
       </S.BtnShowList>

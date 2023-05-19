@@ -4,6 +4,7 @@ import useGetMastery from "@/hooks/useGetMastery";
 import Chart from "@/components/Mastery/Chart";
 import Head from "next/head";
 import List from "@/components/Mastery/List";
+import SummonerInfo from "@/components/Mastery/SummonerInfo";
 
 const Index = () => {
   const router = useRouter();
@@ -16,6 +17,7 @@ const Index = () => {
       <Head>
         <title>CANLab</title>
       </Head>
+      <SummonerInfo data={masteryList} />
       <Chart data={masteryList} />
       <List masteryList={masteryList} />
     </>

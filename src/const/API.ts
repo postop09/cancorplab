@@ -1,3 +1,3 @@
 export const RIOT_API_URL = "https://kr.api.riotgames.com/lol";
 
-export const RIOT_API_KEY = "RGAPI-50b0addf-7084-4da8-88d0-04f54ba8397c";
+export const RIOT_API_KEY = "RGAPI-d0f65f11-fc09-4702-8ab3-5379f75da72d";
