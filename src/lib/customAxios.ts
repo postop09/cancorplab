@@ -1,8 +1,8 @@
 import axios, { AxiosInstance, Method } from "axios";
-import { RIOT_API_KEY, RIOT_API_URL } from "@/const/API";
+import * as process from "process";
 
 const settingAxios: AxiosInstance = axios.create({
-  baseURL: RIOT_API_URL,
+  baseURL: process.env.NEXT_PUBLIC_RIOT_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -11,7 +11,7 @@ const settingAxios: AxiosInstance = axios.create({
 const customAxios = (method: Method, url: string, data?: any) => {
   return settingAxios({
     method,
-    url: url + `?api_key=${RIOT_API_KEY}`,
+    url: url + `?api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`,
     data,
   }).catch((reason) => {
     throw new Error(reason);
