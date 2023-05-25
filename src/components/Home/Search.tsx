@@ -17,7 +17,10 @@ const Search = () => {
       if (summoner) {
         await router.push({
           pathname: "/mastery",
-          query: { summoner: summoner.id },
+          query: {
+            summoner: summoner.id,
+            summonerName: userName,
+          },
         });
       }
     } catch (err) {
@@ -27,14 +30,14 @@ const Search = () => {
 
   return (
     <S.Wrapper>
-      <S.SearchWrapper onSubmit={(e) => handleSearch(e)}>
+      <S.SearchWrapper onSubmit={handleSearch}>
         <S.Input
           type="search"
           placeholder="소환사 이름을 검색해주세요."
           onChange={(e) => setUserName(e.target.value)}
           value={userName}
         />
-        <S.Button type="submit">검색아이콘</S.Button>
+        <S.Button type="submit">검색</S.Button>
       </S.SearchWrapper>
     </S.Wrapper>
   );

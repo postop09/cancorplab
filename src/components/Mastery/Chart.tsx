@@ -3,6 +3,7 @@ import { MasteryFullData } from "@/type/masteryData";
 import bubbleChart from "@/components/Mastery/bubbleChart";
 import theme from "@/styles/theme";
 import * as S from "./Chart.style";
+import { HideTitleH2 } from "@/styles/common";
 
 const Chart = ({ data }: { data: MasteryFullData[] }) => {
   const svgRef = useRef(null);
@@ -29,7 +30,8 @@ const Chart = ({ data }: { data: MasteryFullData[] }) => {
   };
 
   return (
-    <div>
+    <section>
+      <HideTitleH2>플레이 챔피언 별 숙련도 통계</HideTitleH2>
       <S.SvgWrapper>
         <div ref={svgRef}></div>
         <S.CountWrapper>
@@ -55,7 +57,7 @@ const Chart = ({ data }: { data: MasteryFullData[] }) => {
           <dd className="championLastPlayTime">-</dd>
         </div>
       </S.Dl>
-    </div>
+    </section>
   );
 };
 

@@ -7,7 +7,7 @@ const Title = () => {
   return (
     <S.TitleWrapper className={styles.description}>
       <Logo />
-      <S.SubTxt>Get started by LOL-champ</S.SubTxt>
+      <S.SubTxt>Get started by 롤챔 1.0.0</S.SubTxt>
     </S.TitleWrapper>
   );
 };

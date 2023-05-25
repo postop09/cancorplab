@@ -108,6 +108,7 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   border: none;
+  border-left: 1px solid black;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   width: 70px;
