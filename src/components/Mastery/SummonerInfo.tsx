@@ -4,6 +4,7 @@ import { HideTitleH2 } from "@/styles/common";
 import { useRouter } from "next/router";
 import { MasteryFullData } from "@/type/masteryData";
 import useSumMasteryPoint from "@/hooks/useSumMasteryPoint";
+import Link from "next/link";
 
 const SummonerInfo = ({ data }: { data: MasteryFullData[] }) => {
   const router = useRouter();
@@ -23,11 +24,21 @@ const SummonerInfo = ({ data }: { data: MasteryFullData[] }) => {
       </S.InfoWrapper>
       <div>
         {/*<S.AnalysisTxt>성향 분석하러 가기</S.AnalysisTxt>*/}
-        <S.AnalysisBtn type="button" title="내 성향 분석하러 가기">
-          <span className="txt_hover">성향 분석</span>
-          <span className="txt_normal">아이콘</span>
-          <span className="txt_opacity">이동</span>
-        </S.AnalysisBtn>
+        <Link
+          href={{
+            pathname: "/lbti",
+            query: {
+              summoner: query.summoner,
+              summonerName: query.summonerName,
+            },
+          }}
+        >
+          <S.AnalysisBtn type="button" title="내 성향 분석하러 가기">
+            <span className="txt_hover">성향 분석</span>
+            <span className="txt_normal">아이콘</span>
+            <span className="txt_opacity">이동</span>
+          </S.AnalysisBtn>
+        </Link>
       </div>
     </S.Wrapper>
   );

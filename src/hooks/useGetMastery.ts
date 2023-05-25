@@ -37,7 +37,7 @@ const useGetMastery = (id: string) => {
     return arr;
   };
 
-  const getChampionAndMasteryList = async (): Promise<MasteryFullData[]> => {
+  const combineChampionAndMasteryList = async (): Promise<MasteryFullData[]> => {
     let result: MasteryFullData[] = [];
     const masteryList = await getMasteryList();
     const championList = getChampionList();
@@ -57,7 +57,7 @@ const useGetMastery = (id: string) => {
   };
 
   const setMastery = async () => {
-    const ChampionAndMasteryList = await getChampionAndMasteryList();
+    const ChampionAndMasteryList = await combineChampionAndMasteryList();
     if (ChampionAndMasteryList) {
       setMasteryList(ChampionAndMasteryList);
     }
