@@ -1,8 +1,9 @@
 import customAxios from "@/lib/customAxios";
 import { useEffect, useState } from "react";
 import CHAMPION from "../json/champion.json";
-import { CustomChampion } from "@/type/championData";
-import { MasteryFullData } from "@/type/masteryData";
+import { CustomChampion } from "@/type/championData.type";
+import { MasteryFullData } from "@/type/masteryData.type";
+import useFilterObject from "@/hooks/useFilterObject";
 
 const useGetMastery = (id: string) => {
   const [masteryList, setMasteryList] = useState<MasteryFullData[]>([]);
@@ -22,19 +23,11 @@ const useGetMastery = (id: string) => {
     return res && res.data;
   };
 
+  // TODO - object 에서 내가 원하는 key-value 뽑아주는 함수
+  //  파라미터로 list, necessaryKeys 받아서 활용도가 더 높고 재사용할 수 있는 함수로 리팩터링
   const getChampionList = (): CustomChampion[] => {
     const necessaryKeys = ["id", "image", "key", "name", "tags"];
-    let arr: CustomChampion[] = [];
-
-    Object.entries(CHAMPION.data).forEach(([_, value]: [string, any]) => {
-      const customData = necessaryKeys.reduce((result: any, key) => {
-        result[key] = value[key];
-        return result;
-      }, {}) as CustomChampion;
-      arr.push(customData);
-    });
-
-    return arr;
+    return useFilterObject(CHAMPION.data, necessaryKeys);
   };
 
   const combineChampionAndMasteryList = async (): Promise<MasteryFullData[]> => {

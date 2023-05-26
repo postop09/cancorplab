@@ -2,7 +2,7 @@ import React from "react";
 import * as S from "./SummonerInfo.style";
 import { HideTitleH2 } from "@/styles/common";
 import { useRouter } from "next/router";
-import { MasteryFullData } from "@/type/masteryData";
+import { MasteryFullData } from "@/type/masteryData.type";
 import useSumMasteryPoint from "@/hooks/useSumMasteryPoint";
 import Link from "next/link";
 

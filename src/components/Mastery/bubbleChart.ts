@@ -1,6 +1,6 @@
 import { create, hierarchy, pack, range, select, zoom } from "d3";
 import { BubbleChartOption, SvgPatternData } from "@/type/bubbleChart.type";
-import { MasteryFullData } from "@/type/masteryData";
+import { MasteryFullData } from "@/type/masteryData.type";
 
 const bubbleChart = (
   data: MasteryFullData[],

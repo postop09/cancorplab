@@ -15,7 +15,7 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>CANLab</title>
+        <title>롤챔 | CANLab</title>
       </Head>
       <SummonerInfo data={masteryList} />
       <Chart data={masteryList} />

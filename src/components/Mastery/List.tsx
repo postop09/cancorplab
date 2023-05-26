@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MasteryFullData } from "@/type/masteryData";
+import { MasteryFullData } from "@/type/masteryData.type";
 import * as S from "@/components/Mastery/List.style";
 import Image from "next/image";
 import { HideTitleH2 } from "@/styles/common";

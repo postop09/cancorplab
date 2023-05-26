@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { MasteryFullData } from "@/type/masteryData";
+import { MasteryFullData } from "@/type/masteryData.type";
 import bubbleChart from "@/components/Mastery/bubbleChart";
 import theme from "@/styles/theme";
 import * as S from "./Chart.style";

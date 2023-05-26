@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { MasteryFullData } from "@/type/masteryData";
+import { MasteryFullData } from "@/type/masteryData.type";
 
 interface contextProps {
   children: React.ReactNode | React.ReactNode[];
