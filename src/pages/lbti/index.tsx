@@ -5,6 +5,7 @@ import useGetMastery from "@/hooks/useGetMastery";
 import useGetAnalysisData from "@/hooks/useGetAnalysisData";
 import { TAGS } from "@/const/TAGS";
 import useSumMasteryPoint from "@/hooks/useSumMasteryPoint";
+import ProgressBar from "@/components/lbti/ProgressBar";
 
 const Index = () => {
   const router = useRouter();
@@ -55,6 +56,7 @@ const Index = () => {
           MARKSMAN : {sumByTags(TAGS.MARKSMAN)} ({((MARKSMAN / ALL) * 100).toFixed(1)}%)
         </li>
       </ul>
+      <ProgressBar title={"명사수"} numerator={MARKSMAN} denominator={ALL} />
     </>
   );
 };

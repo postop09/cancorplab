@@ -1,10 +1,10 @@
 import React from "react";
 import { useRouter } from "next/router";
 import useGetMastery from "@/hooks/useGetMastery";
-import Chart from "@/components/Mastery/Chart";
+import Chart from "@/components/mastery/Chart";
 import Head from "next/head";
-import List from "@/components/Mastery/List";
-import SummonerInfo from "@/components/Mastery/SummonerInfo";
+import List from "@/components/mastery/List";
+import SummonerInfo from "@/components/mastery/SummonerInfo";
 
 const Index = () => {
   const router = useRouter();
