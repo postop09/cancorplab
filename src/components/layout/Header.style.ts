@@ -4,7 +4,7 @@ export const Header = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  border-bottom: 2px solid ${({ theme }) => theme.COLOR.original};
+  border-bottom: 2px solid ${({ theme }) => theme.COLOR.borderOrigin};
   background: ${({ theme }) => theme.COLOR.contents};
   z-index: 100;
 `;

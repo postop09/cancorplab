@@ -102,7 +102,7 @@ export const Input = styled.input`
 
   &:focus {
     transition: all 0.5s;
-    outline-color: ${({ theme }) => theme.COLOR.original};
+    outline-color: ${({ theme }) => theme.COLOR.borderOrigin};
   }
 `;
 
@@ -117,6 +117,6 @@ export const Button = styled.button`
 
   &:focus {
     transition: all 0.5s;
-    outline-color: ${({ theme }) => theme.COLOR.original};
+    outline-color: ${({ theme }) => theme.COLOR.borderOrigin};
   }
 `;

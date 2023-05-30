@@ -6,7 +6,14 @@ import { MasteryFullData } from "@/type/masteryData.type";
 import useSumMasteryPoint from "@/hooks/useSumMasteryPoint";
 import Link from "next/link";
 
-const SummonerInfo = ({ data }: { data: MasteryFullData[] }) => {
+type props = {
+  data: MasteryFullData[];
+  pathName?: string;
+  title?: string;
+  contents?: string;
+};
+
+const SummonerInfo = ({ data, pathName, title, contents }: props) => {
   const router = useRouter();
   const { query } = router;
 
@@ -22,24 +29,25 @@ const SummonerInfo = ({ data }: { data: MasteryFullData[] }) => {
           </dd>
         </S.ScoreWrapper>
       </S.InfoWrapper>
-      <div>
-        {/*<S.AnalysisTxt>성향 분석하러 가기</S.AnalysisTxt>*/}
-        <Link
-          href={{
-            pathname: "/lbti",
-            query: {
-              summoner: query.summoner,
-              summonerName: query.summonerName,
-            },
-          }}
-        >
-          <S.AnalysisBtn type="button" title="내 성향 분석하러 가기">
-            <span className="txt_hover">성향 분석</span>
-            <span className="txt_normal">아이콘</span>
-            <span className="txt_opacity">이동</span>
-          </S.AnalysisBtn>
-        </Link>
-      </div>
+      {pathName && (
+        <div>
+          <Link
+            href={{
+              pathname: pathName,
+              query: {
+                summoner: query.summoner,
+                summonerName: query.summonerName,
+              },
+            }}
+          >
+            <S.AnalysisBtn type="button" title={title}>
+              <span className="txt_hover">{contents}</span>
+              <span className="txt_normal">아이콘</span>
+              <span className="txt_opacity">이동</span>
+            </S.AnalysisBtn>
+          </Link>
+        </div>
+      )}
     </S.Wrapper>
   );
 };

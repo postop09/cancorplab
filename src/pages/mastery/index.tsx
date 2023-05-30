@@ -17,7 +17,12 @@ const Index = () => {
       <Head>
         <title>롤챔 | CANLab</title>
       </Head>
-      <SummonerInfo data={masteryList} />
+      <SummonerInfo
+        data={masteryList}
+        pathName={"/lbti"}
+        title={"내 성향 분석하러 가기"}
+        contents={"성향 분석"}
+      />
       <Chart data={masteryList} />
       <List masteryList={masteryList} />
     </>

@@ -8,18 +8,19 @@ type Props = {
 };
 
 const ProgressBar = ({ title, numerator, denominator }: Props) => {
-  const dealt = Math.floor((numerator / denominator) * 100);
+  const dealt: number = +((numerator / denominator) * 100).toFixed(1);
 
   return (
     <S.Wrapper>
-      <S.Title>{title}</S.Title>
       <S.ProgressWrapper>
+        <S.Title>{title}</S.Title>
         <S.Progress>
           <S.Dealt dealt={dealt}></S.Dealt>
         </S.Progress>
-        <div>
-          {dealt}% ({numerator})
-        </div>
+        <S.DealtTxt>
+          <span>{dealt}%</span>
+          <span>({numerator})</span>
+        </S.DealtTxt>
       </S.ProgressWrapper>
     </S.Wrapper>
   );
