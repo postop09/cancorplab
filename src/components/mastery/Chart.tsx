@@ -16,7 +16,7 @@ const Chart = ({ data }: { data: MasteryFullData[] }) => {
 
   const createChart = () => {
     const svg = bubbleChart(data, {
-      stroke: "#daa520",
+      stroke: theme.COLOR.borderBright,
       strokeWidth: 1.5,
       width: 1100,
       backgroundColor: theme.COLOR.contents,

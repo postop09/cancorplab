@@ -20,8 +20,9 @@ const H1 = styled.h1`
     align-items: baseline;
     gap: 0.5rem;
     transition: color 0.15s;
+
     &:hover {
-      color: #770f09;
+      color: ${({ theme }) => theme.COLOR.txtStrong};
     }
   }
 `;

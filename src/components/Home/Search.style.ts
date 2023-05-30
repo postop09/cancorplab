@@ -1,36 +1,4 @@
-import styled, { keyframes } from "styled-components";
-
-const borderRole = keyframes`
-  0% {
-    top: 0;
-    left: 0;
-  }
-  40% {
-    top: 0;
-    left: calc(100% - 30px);
-  }
-  50% {
-    top: calc(100% - 30px);
-    left: calc(100% - 30px);
-  }
-  90% {
-    top: calc(100% - 30px);
-    left: 0;
-  }
-  100% {
-    top: 0;
-    left: 0;
-  }
-`;
-
-export const Box = styled.div`
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  background: goldenrod;
-  z-index: 90;
-  animation: ${borderRole} 5s 1s infinite linear;
-`;
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -79,16 +47,9 @@ export const SearchWrapper = styled.form`
   border-radius: 30px;
   width: 100%;
   height: 60px;
-  // animation style
-  //overflow: hidden;
 `;
 
 export const Input = styled.input`
-  // animation style
-  //position: absolute;
-  //top: 50%;
-  //left: 50%;
-  //transform: translate(-50%, -50%);
   border: none;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
@@ -113,7 +74,8 @@ export const Button = styled.button`
   border-bottom-right-radius: 30px;
   width: 70px;
   cursor: pointer;
-  background: #686868;
+  color: black;
+  background: ${({ theme }) => theme.COLOR.backgroundGrey};
 
   &:focus {
     transition: all 0.5s;

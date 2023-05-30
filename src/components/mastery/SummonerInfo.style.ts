@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.section`
   display: flex;
   justify-content: space-between;
-  border: 2px solid #1d213a;
+  border: 2px solid ${({ theme }) => theme.COLOR.borderContents};
   border-radius: ${({ theme }) => theme.ROUND.md};
   max-width: 1100px;
   margin: 1rem auto;
@@ -19,7 +19,7 @@ export const InfoWrapper = styled.div`
 
 export const UserName = styled.strong`
   font-size: ${({ theme }) => theme.SIZE.xl};
-  color: goldenrod;
+  color: ${({ theme }) => theme.COLOR.borderOrigin};
 `;
 
 export const ScoreWrapper = styled.div`
@@ -39,7 +39,7 @@ export const ScoreWrapper = styled.div`
 
 export const AnalysisBtn = styled.button`
   position: relative;
-  border: 2px solid gold;
+  border: 2px solid ${({ theme }) => theme.COLOR.borderBright};
   border-radius: ${({ theme }) => theme.ROUND.md};
   padding: 1.8rem;
   background: none;
@@ -47,7 +47,7 @@ export const AnalysisBtn = styled.button`
   transition: all 0.2s;
 
   &:hover {
-    background-color: #770f09;
+    background-color: ${({ theme }) => theme.COLOR.txtStrong};
   }
 
   span {
@@ -80,8 +80,4 @@ export const AnalysisBtn = styled.button`
   .txt_opacity {
     opacity: 0;
   }
-`;
-
-export const AnalysisTxt = styled.span`
-  font-size: ${({ theme }) => theme.SIZE.sm};
 `;
