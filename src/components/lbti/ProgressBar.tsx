@@ -2,18 +2,18 @@ import React from "react";
 import * as S from "./ProgressBar.style";
 
 type Props = {
-  title?: string;
+  label?: string;
   numerator: number;
   denominator: number;
 };
 
-const ProgressBar = ({ title, numerator, denominator }: Props) => {
+const ProgressBar = ({ label, numerator, denominator }: Props) => {
   const dealt: number = +((numerator / denominator) * 100).toFixed(1);
 
   return (
     <S.Wrapper>
       <S.ProgressWrapper>
-        <S.Title>{title}</S.Title>
+        <S.Title>{label}</S.Title>
         <S.Progress>
           <S.Dealt dealt={dealt}></S.Dealt>
         </S.Progress>

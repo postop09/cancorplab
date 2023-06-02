@@ -1,5 +1,5 @@
 import { MasteryFullData } from "@/type/masteryData.type";
-import { AnalysisDataType, TagsEnum } from "@/type/AnalysisData.type";
+import { AnalysisDataType, TagsEnum } from "@/type/analysisData.type";
 import useSumMasteryPoint from "@/hooks/useSumMasteryPoint";
 import useFilterObject from "@/hooks/useFilterObject";
 

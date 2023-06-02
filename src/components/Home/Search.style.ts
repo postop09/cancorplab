@@ -68,14 +68,18 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   border-left: 1px solid black;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
-  width: 70px;
-  cursor: pointer;
+  min-width: 60px;
+  padding-right: 5px;
   color: black;
-  background: ${({ theme }) => theme.COLOR.backgroundGrey};
+  background: ${({ theme }) => theme.COLOR.borderContents};
+  cursor: pointer;
 
   &:focus {
     transition: all 0.5s;

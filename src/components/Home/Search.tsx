@@ -2,6 +2,7 @@ import React, { FormEvent } from "react";
 import * as S from "./Search.style";
 import useGetSummoner from "@/hooks/useGetSummoner";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const Search = () => {
   const { getSummoner, userName, setUserName } = useGetSummoner();
@@ -35,7 +36,9 @@ const Search = () => {
           onChange={(e) => setUserName(e.target.value)}
           value={userName}
         />
-        <S.Button type="submit">검색</S.Button>
+        <S.Button type="submit">
+          <Image src="/icon/search.png" alt="검색" width={30} height={30} />
+        </S.Button>
       </S.SearchWrapper>
     </S.Wrapper>
   );

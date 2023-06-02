@@ -68,8 +68,9 @@ export const AnalysisBtn = styled.button`
 
   .txt_normal {
     position: absolute;
+    top: 50%;
     right: 50%;
-    transform: translateX(50%);
+    transform: translate(50%, -50%);
     transition: all 0.15s;
   }
 

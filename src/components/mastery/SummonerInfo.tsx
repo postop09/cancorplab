@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { MasteryFullData } from "@/type/masteryData.type";
 import useSumMasteryPoint from "@/hooks/useSumMasteryPoint";
 import Link from "next/link";
+import Image from "next/image";
 
 type props = {
   data: MasteryFullData[];
@@ -42,7 +43,9 @@ const SummonerInfo = ({ data, pathName, title, contents }: props) => {
           >
             <S.AnalysisBtn type="button" title={title}>
               <span className="txt_hover">{contents}</span>
-              <span className="txt_normal">아이콘</span>
+              <span className="txt_normal">
+                <Image src="/icon/caret2.png" alt="" width={30} height={30} />
+              </span>
               <span className="txt_opacity">이동</span>
             </S.AnalysisBtn>
           </Link>
