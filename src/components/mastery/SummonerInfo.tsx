@@ -6,6 +6,7 @@ import { MasteryFullData } from "@/type/masteryData.type";
 import useSumMasteryPoint from "@/hooks/useSumMasteryPoint";
 import Link from "next/link";
 import Image from "next/image";
+import useToLocale from "@/hooks/common/useToLocale";
 
 type props = {
   data: MasteryFullData[];
@@ -26,7 +27,7 @@ const SummonerInfo = ({ data, pathName, title, contents }: props) => {
         <S.ScoreWrapper>
           <dt>챔피언 숙련도 점수</dt>
           <dd>
-            {useSumMasteryPoint(data).toLocaleString()} <span>pt</span>
+            {useToLocale(useSumMasteryPoint(data))} <span>pt</span>
           </dd>
         </S.ScoreWrapper>
       </S.InfoWrapper>
@@ -44,7 +45,7 @@ const SummonerInfo = ({ data, pathName, title, contents }: props) => {
             <S.AnalysisBtn type="button" title={title}>
               <span className="txt_hover">{contents}</span>
               <span className="txt_normal">
-                <Image src="/icon/caret2.png" alt="" width={30} height={30} />
+                <Image src="/icon/caretRight.png" alt="" width={30} height={30} />
               </span>
               <span className="txt_opacity">이동</span>
             </S.AnalysisBtn>

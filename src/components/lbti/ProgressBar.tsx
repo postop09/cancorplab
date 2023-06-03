@@ -1,5 +1,7 @@
 import React from "react";
 import * as S from "./ProgressBar.style";
+import useGetPercentage from "@/hooks/common/useGetPercentage";
+import useToLocale from "@/hooks/common/useToLocale";
 
 type Props = {
   label?: string;
@@ -8,7 +10,7 @@ type Props = {
 };
 
 const ProgressBar = ({ label, numerator, denominator }: Props) => {
-  const dealt: number = +((numerator / denominator) * 100).toFixed(1);
+  const dealt = useGetPercentage(numerator, denominator);
 
   return (
     <S.Wrapper>
@@ -19,7 +21,7 @@ const ProgressBar = ({ label, numerator, denominator }: Props) => {
         </S.Progress>
         <S.DealtTxt>
           <span>{dealt}%</span>
-          <span>({numerator})</span>
+          <span>({useToLocale(numerator)})</span>
         </S.DealtTxt>
       </S.ProgressWrapper>
     </S.Wrapper>

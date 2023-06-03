@@ -49,6 +49,9 @@ const AnalysisResult = ({ masteryList }: Props) => {
   //  예시) M: 결투가, S: [마법사, 탱커, 암살자, 서포터, 명사수] 중 하나
   //    M-S 경우의 수: 5 가지
   //    전체 경우의 수: 6 * 5 = 30 가지
+  //  풀이) value 제일 높은값, 두번째로 높은값 추출
+  //  [{1st...},{2nd...}]
+  //  label 의 조합 분석
 
   return (
     <S.Wrapper>

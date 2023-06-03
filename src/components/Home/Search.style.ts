@@ -78,7 +78,7 @@ export const Button = styled.button`
   min-width: 60px;
   padding-right: 5px;
   color: black;
-  background: ${({ theme }) => theme.COLOR.borderContents};
+  background: ${({ theme }) => theme.COLOR.borderBright};
   cursor: pointer;
 
   &:focus {

@@ -21,17 +21,15 @@ const ResultStatistics = ({ data, totalPoints }: Props) => {
   return (
     <S.ResultWrapper>
       <Image
-        src={"/assets/img/champion/loading/Talon_0.jpg"}
+        src={"/assets/img/champion/loading/Olaf_1.jpg"}
         alt={""}
         width={308}
         height={560}
       />
       <S.DetailWrapper>
         <S.ResultWordWrapper>
-          <S.ResultWord>누 칼 협 ?</S.ResultWord>
-          <S.ResultContents>
-            대체...얼마나 많은 생명을 빼앗아 갔습니까...
-          </S.ResultContents>
+          <S.ResultWord>탑 왕</S.ResultWord>
+          <S.ResultContents>최선의 방어는 공격</S.ResultContents>
         </S.ResultWordWrapper>
         <S.Ul>
           {data.map((item, index) => {
