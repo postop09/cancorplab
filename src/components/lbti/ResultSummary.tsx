@@ -4,11 +4,7 @@ import { useRouter } from "next/router";
 import { HideTitleH3 } from "@/styles/common";
 import useToLocale from "@/hooks/common/useToLocale";
 import useGetPercentage from "@/hooks/common/useGetPercentage";
-
-type StatisticsData = {
-  label: string;
-  value: number;
-};
+import { StatisticsData } from "@/type/result.type";
 
 type Props = {
   data: StatisticsData[];
@@ -51,6 +47,9 @@ const ResultSummary = ({ data, totalPoints }: Props) => {
           {useGetPercentage(minValueTag.value, totalPoints)}%)
         </S.Strong>{" "}
         를 차지하고 있습니다.
+      </p>
+      <p>
+        플레이 유형을 분석한 결과 소환사님은 협곡의 <S.Strong>바텀의 왕</S.Strong>입니다.
       </p>
     </S.Wrapper>
   );

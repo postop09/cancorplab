@@ -2,11 +2,7 @@ import React from "react";
 import Image from "next/image";
 import * as S from "./ResultStatistics.style";
 import ProgressBar from "@/components/lbti/ProgressBar";
-
-type StatisticsData = {
-  label: string;
-  value: number;
-};
+import { StatisticsData } from "@/type/result.type";
 
 type Props = {
   data: StatisticsData[];

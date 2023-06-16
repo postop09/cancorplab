@@ -1,6 +1,6 @@
 import customAxios from "@/lib/customAxios";
 import { useEffect, useState } from "react";
-import CHAMPION from "../json/champion.json";
+import CHAMPION from "../data/champion.json";
 import { CustomChampion } from "@/type/championData.type";
 import { MasteryFullData } from "@/type/masteryData.type";
 import useFilterObject from "@/hooks/useFilterObject";
