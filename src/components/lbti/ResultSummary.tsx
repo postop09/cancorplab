@@ -4,10 +4,11 @@ import { useRouter } from "next/router";
 import { HideTitleH3 } from "@/styles/common";
 import useToLocale from "@/hooks/common/useToLocale";
 import useGetPercentage from "@/hooks/common/useGetPercentage";
-import { StatisticsData } from "@/type/result.type";
+import { SumByTagsData } from "@/type/result.type";
+import useAnalysisCharacter from "@/hooks/useAnalysisCharacter";
 
 type Props = {
-  data: StatisticsData[];
+  data: SumByTagsData[];
   totalPoints: number;
 };
 
@@ -20,6 +21,7 @@ const ResultSummary = ({ data, totalPoints }: Props) => {
   const minValueTag = data.reduce((prev, current) => {
     return current.value < prev.value ? current : prev;
   });
+  const { character } = useAnalysisCharacter(data);
 
   // TODO - 챔피언 점수 비율 로직 작성
   //  상황별 예외처리 조건부 로직 작성 (Hook or Function)
@@ -48,9 +50,12 @@ const ResultSummary = ({ data, totalPoints }: Props) => {
         </S.Strong>{" "}
         를 차지하고 있습니다.
       </p>
-      <p>
-        플레이 유형을 분석한 결과 소환사님은 협곡의 <S.Strong>바텀의 왕</S.Strong>입니다.
-      </p>
+      <S.ResultWrapper>
+        <S.SummonerName>{query.summonerName}</S.SummonerName> 소환사님의 플레이 유형을
+        분석한 결과 소환사님은 협곡의 <S.Strong>{character?.title}</S.Strong> 입니다.
+        <br />
+        {character?.contents}
+      </S.ResultWrapper>
     </S.Wrapper>
   );
 };

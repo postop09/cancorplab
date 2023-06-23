@@ -2,10 +2,11 @@ import React from "react";
 import Image from "next/image";
 import * as S from "./ResultStatistics.style";
 import ProgressBar from "@/components/lbti/ProgressBar";
-import { StatisticsData } from "@/type/result.type";
+import { SumByTagsData } from "@/type/result.type";
+import useAnalysisCharacter from "@/hooks/useAnalysisCharacter";
 
 type Props = {
-  data: StatisticsData[];
+  data: SumByTagsData[];
   totalPoints: number;
 };
 
@@ -13,19 +14,24 @@ const ResultStatistics = ({ data, totalPoints }: Props) => {
   // TODO - ResultWordWrapper 삭제
   //  현재 컴포넌트에서는 통계 결과를 보여준다.
   //  결과 텍스트는 ResultDetail 에서 보여준다.
+  const { character } = useAnalysisCharacter(data);
 
   return (
     <S.ResultWrapper>
-      <Image
-        src={"/assets/img/champion/loading/Olaf_1.jpg"}
-        alt={""}
-        width={308}
-        height={560}
-      />
+      {character?.image ? (
+        <Image
+          src={`/assets/img/champion/loading/${character?.image}`}
+          alt={""}
+          width={308}
+          height={560}
+        />
+      ) : (
+        <p>error</p>
+      )}
       <S.DetailWrapper>
         <S.ResultWordWrapper>
-          <S.ResultWord>탑 왕</S.ResultWord>
-          <S.ResultContents>최선의 방어는 공격</S.ResultContents>
+          <S.ResultWord>{character?.title}</S.ResultWord>
+          <S.ResultContents>{character?.subtitle}</S.ResultContents>
         </S.ResultWordWrapper>
         <S.Ul>
           {data.map((item, index) => {

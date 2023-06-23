@@ -27,3 +27,9 @@ export const Strong = styled.strong`
   font-weight: normal;
   color: ${({ theme }) => theme.COLOR.borderBright};
 `;
+
+export const ResultWrapper = styled.p`
+  max-width: 700px;
+  word-break: keep-all;
+  line-height: 2rem;
+`;

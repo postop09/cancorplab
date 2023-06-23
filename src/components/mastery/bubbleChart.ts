@@ -51,11 +51,9 @@ const bubbleChart = (
 
   const createZoom = () => {
     const g = svg.append("g");
-
     const zoomed = ({ transform }: any) => {
       g.attr("transform", transform);
     };
-
     // @ts-ignore
     svg.call(zoom().scaleExtent([1, 8]).on("zoom", zoomed));
 
