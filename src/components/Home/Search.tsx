@@ -15,7 +15,7 @@ const Search = () => {
       const summoner = await getSummoner();
       if (summoner) {
         await router.push({
-          pathname: "/mastery",
+          pathname: "/lbti",
           query: {
             summoner: summoner.id,
             summonerName: userName,

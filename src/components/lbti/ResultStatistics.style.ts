@@ -1,7 +1,12 @@
 import styled from "styled-components";
+import { MEDIA_RESULT_STATISTICS } from "@/const/SCREEN";
 
 export const ResultWrapper = styled.div`
   display: flex;
+  @media screen and (max-width: ${MEDIA_RESULT_STATISTICS}) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 
 export const DetailWrapper = styled.div`
@@ -11,6 +16,10 @@ export const DetailWrapper = styled.div`
   width: 100%;
   height: 560px;
   padding: 2rem 1rem;
+  @media screen and (max-width: ${MEDIA_RESULT_STATISTICS}) {
+    height: 430px;
+    padding: 1rem 0.5rem;
+  }
 `;
 
 export const ResultWordWrapper = styled.div`

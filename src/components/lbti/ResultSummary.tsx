@@ -23,9 +23,6 @@ const ResultSummary = ({ data, totalPoints }: Props) => {
   });
   const { character } = useAnalysisCharacter(data);
 
-  // TODO - 챔피언 점수 비율 로직 작성
-  //  상황별 예외처리 조건부 로직 작성 (Hook or Function)
-
   return (
     <S.Wrapper>
       <HideTitleH3>분석 내용 요약</HideTitleH3>
@@ -51,8 +48,7 @@ const ResultSummary = ({ data, totalPoints }: Props) => {
         를 차지하고 있습니다.
       </p>
       <S.ResultWrapper>
-        <S.SummonerName>{query.summonerName}</S.SummonerName> 소환사님의 플레이 유형을
-        분석한 결과 소환사님은 협곡의 <S.Strong>{character?.title}</S.Strong> 입니다.
+        소환사님은 협곡의 <S.SummonerName>{character?.title}</S.SummonerName> 입니다.
         <br />
         {character?.contents}
       </S.ResultWrapper>
