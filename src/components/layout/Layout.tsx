@@ -8,18 +8,18 @@ import Footer from "@/components/layout/Footer";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
 
-  const headerPaddingStyle = () => {
+  const isNotOriginPath = (returnValue: any) => {
     if (router.pathname !== "/") {
-      return { paddingTop: "75px" };
+      return returnValue;
     }
     return;
   };
 
   return (
     <ThemeProvider theme={theme}>
-      {router.pathname !== "/" && <Header />}
-      <main style={headerPaddingStyle()}>{children}</main>
-      {router.pathname !== "/" && <Footer />}
+      {isNotOriginPath(<Header />)}
+      <main style={isNotOriginPath({ paddingTop: "75px" })}>{children}</main>
+      {isNotOriginPath(<Footer />)}
     </ThemeProvider>
   );
 };

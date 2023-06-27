@@ -9,35 +9,6 @@ export const Wrapper = styled.div`
   max-width: 600px;
   width: 100%;
   padding: 4rem 0;
-
-  &::before,
-  &::after {
-    content: "";
-    left: 50%;
-    position: absolute;
-    filter: blur(45px);
-    transform: translateZ(0);
-  }
-
-  &::before {
-    background: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-    border-radius: 50%;
-    width: 480px;
-    height: 360px;
-    margin-left: -400px;
-  }
-
-  &::after {
-    background: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    width: 240px;
-    height: 180px;
-    z-index: -1;
-  }
 `;
 
 export const SearchWrapper = styled.form`
