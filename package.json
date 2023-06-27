@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "aws s3 sync ./next s3://lol-champ-cancorp --profile=canlab"
   },
   "dependencies": {
     "@types/d3": "^7.4.0",

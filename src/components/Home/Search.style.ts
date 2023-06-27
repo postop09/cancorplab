@@ -31,6 +31,7 @@ export const Input = styled.input`
   font-size: 1.2rem;
   letter-spacing: 3px;
   z-index: 10;
+  background-color: ${({ theme }) => theme.COLOR.borderContents};
 
   &:focus {
     transition: all 0.5s;
@@ -43,13 +44,13 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
   border: none;
-  border-left: 1px solid black;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   min-width: 60px;
   padding-right: 5px;
   color: black;
-  background: ${({ theme }) => theme.COLOR.borderBright};
+  //background: #3b3b3b;
+  background-color: ${({ theme }) => theme.COLOR.borderContents};
   cursor: pointer;
 
   &:focus {

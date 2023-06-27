@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "@/components/layout/Header";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import theme from "@/styles/theme";
 import { useRouter } from "next/router";
 import Footer from "@/components/layout/Footer";
@@ -17,11 +17,20 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      {isNotOriginPath(<Header />)}
-      <main style={isNotOriginPath({ paddingTop: "75px" })}>{children}</main>
-      {isNotOriginPath(<Footer />)}
+      <Wrapper>
+        {isNotOriginPath(<Header />)}
+        <main style={isNotOriginPath({ paddingTop: "75px", paddingBottom: "200px" })}>
+          {children}
+        </main>
+        {isNotOriginPath(<Footer />)}
+      </Wrapper>
     </ThemeProvider>
   );
 };
 
 export default Layout;
+
+const Wrapper = styled.div`
+  position: relative;
+  min-height: 100vh;
+`;

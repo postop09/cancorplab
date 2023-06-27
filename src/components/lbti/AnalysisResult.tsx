@@ -18,7 +18,7 @@ const AnalysisResult = ({ masteryList }: Props) => {
   const SUM_BY_TAGS = [
     {
       title: "F",
-      label: "결투가",
+      label: "전사",
       value: sumByTags(TAGS.FIGHTER),
     },
     {

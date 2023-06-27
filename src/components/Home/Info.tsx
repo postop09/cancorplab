@@ -17,7 +17,7 @@ const Info = () => {
       </S.Card>
       <S.Card>
         <h2>문의하기</h2>
-        <p>오류 혹은 요구사항이 있다면 이메일로 문의해주세요. postop09@naver.com</p>
+        <p>오류 혹은 요구사항이 있다면 이메일로 문의해주세요. canlab09@naver.com</p>
       </S.Card>
       <S.Card>
         <h2>주의사항</h2>

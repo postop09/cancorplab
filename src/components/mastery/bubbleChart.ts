@@ -5,7 +5,7 @@ import { MasteryFullData } from "@/type/masteryData.type";
 const bubbleChart = (
   data: MasteryFullData[],
   {
-    width = 640,
+    width = 1100,
     height = width,
     padding = 3,
     margin = 20,
@@ -88,7 +88,7 @@ const bubbleChart = (
       .attr("href", (d: SvgPatternData) => {
         if (data[d.data]) {
           const backImg = data[d.data].image.full;
-          return `/assets/img/champion_icon/${backImg}`;
+          return `/assets/img/champion/profile/${backImg}`;
         }
       })
       .attr("width", 1)
