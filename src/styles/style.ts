@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Pretendard';
-    src: url(../assets/font/PretendardVariable.ttf) format('truetype');
+    src: url(/assets/font/PretendardVariable.ttf) format('truetype');
   }
 
   * {
