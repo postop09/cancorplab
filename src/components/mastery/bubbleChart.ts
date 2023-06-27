@@ -88,7 +88,7 @@ const bubbleChart = (
       .attr("href", (d: SvgPatternData) => {
         if (data[d.data]) {
           const backImg = data[d.data].image.full;
-          return `/assets/img/champion_icon/${backImg}`;
+          return `/assets/img/champion/profile/${backImg}`;
         }
       })
       .attr("width", 1)
