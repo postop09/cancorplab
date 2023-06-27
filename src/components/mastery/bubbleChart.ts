@@ -5,7 +5,7 @@ import { MasteryFullData } from "@/type/masteryData.type";
 const bubbleChart = (
   data: MasteryFullData[],
   {
-    width = 640,
+    width = 1100,
     height = width,
     padding = 3,
     margin = 20,

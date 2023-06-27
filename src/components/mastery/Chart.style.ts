@@ -4,11 +4,12 @@ export const SvgWrapper = styled.div`
   position: relative;
   max-width: 1100px;
   margin: auto;
+  text-align: center;
 `;
 
 export const CountWrapper = styled.div`
   position: absolute;
-  top: 1rem;
+  top: 1.5rem;
   left: 2rem;
 
   span {
