@@ -28,7 +28,7 @@ export const CountTxt = styled.span`
 export const Dl = styled.dl`
   display: flex;
   justify-content: space-evenly;
-  border: 2px solid gold;
+  border: 2px solid ${({ theme }) => theme.COLOR.borderBright};
   border-radius: ${({ theme }) => theme.ROUND.md};
   background: ${({ theme }) => theme.COLOR.contents};
   max-width: 1100px;
@@ -38,6 +38,7 @@ export const Dl = styled.dl`
 
   div {
     flex: 1;
+
     &:last-child {
       flex: 2;
     }
@@ -46,11 +47,13 @@ export const Dl = styled.dl`
   dt {
     font-size: ${({ theme }) => theme.SIZE.sm};
   }
+
   dd {
     margin-top: 0.2rem;
     margin-bottom: 0.5rem;
     font-size: ${({ theme }) => theme.SIZE.xl};
     font-weight: bold;
+
     &:last-child {
       margin-bottom: 0;
     }

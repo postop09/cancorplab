@@ -10,11 +10,13 @@ const TEXT = {
 };
 
 const COLOR = {
-  original: "goldenrod",
+  txtStrong: "#770f09",
   contents: "#14172a",
-  white: "#FFFFFF",
-  secondWhite: "#AEAEAE",
-  txtInfo: "#5E5E5E",
+  background: "#14172a",
+  backgroundGrey: "#AEAEAE",
+  borderContents: "#1d213a",
+  borderOrigin: "#daa520",
+  borderBright: "#ffd700",
 };
 
 const SIZE = {
@@ -36,6 +38,7 @@ const ROUND = {
 
 const WIDTH = {
   pc: "1100px",
+  mid: "800px",
   mobile: "420px",
 };
 

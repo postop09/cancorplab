@@ -1,66 +1,29 @@
 import React from "react";
-import styles from "@/styles/Home.module.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import * as S from "./Info.style";
 
 const Info = () => {
   return (
-    <div className={styles.grid}>
-      <a
-        href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        className={styles.card}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <h2>
-          Docs <span>-&gt;</span>
-        </h2>
-        <p>Find in-depth information about Next.js features and API.</p>
-      </a>
-
-      <a
-        href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        className={styles.card}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <h2 className={inter.className}>
-          Learn <span>-&gt;</span>
-        </h2>
-        <p className={inter.className}>
-          Learn about Next.js in an interactive course with&nbsp;quizzes!
+    <S.InfoWrapper>
+      <S.Card>
+        <h2>성향분석</h2>
+        <p>
+          자신이 플레이한 챔피언 역할군의 숙련도 비율을 파악하고 플레이 성향에 대해 확인할
+          수 있습니다.
         </p>
-      </a>
-
-      <a
-        href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        className={styles.card}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <h2 className={inter.className}>
-          Templates <span>-&gt;</span>
-        </h2>
-        <p className={inter.className}>
-          Discover and deploy boilerplate example Next.js&nbsp;projects.
-        </p>
-      </a>
-
-      <a
-        href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        className={styles.card}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <h2 className={inter.className}>
-          Deploy <span>-&gt;</span>
-        </h2>
-        <p className={inter.className}>
-          Instantly deploy your Next.js site to a shareable URL with&nbsp;Vercel.
-        </p>
-      </a>
-    </div>
+      </S.Card>
+      <S.Card>
+        <h2>차트</h2>
+        <p>자신이 플레이한 챔피언의 숙련도 현황을 이미지와 함께 차트로 볼 수 있습니다!</p>
+      </S.Card>
+      <S.Card>
+        <h2>문의하기</h2>
+        <p>오류 혹은 요구사항이 있다면 이메일로 문의해주세요. postop09@naver.com</p>
+      </S.Card>
+      <S.Card>
+        <h2>주의사항</h2>
+        <p>결과에 대해서는 재미로 생각해주세요.</p>
+      </S.Card>
+    </S.InfoWrapper>
   );
 };
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { useRouter } from "next/router";
 import useGetMastery from "@/hooks/useGetMastery";
-import Chart from "@/components/Mastery/Chart";
+import Chart from "@/components/mastery/Chart";
 import Head from "next/head";
-import List from "@/components/Mastery/List";
-import SummonerInfo from "@/components/Mastery/SummonerInfo";
+import List from "@/components/mastery/List";
+import SummonerInfo from "@/components/mastery/SummonerInfo";
 
 const Index = () => {
   const router = useRouter();
@@ -15,9 +15,14 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>CANLab</title>
+        <title>롤챔 | CANLab</title>
       </Head>
-      <SummonerInfo data={masteryList} />
+      <SummonerInfo
+        data={masteryList}
+        pathName={"/lbti"}
+        title={"내 성향 분석하러 가기"}
+        contents={"성향 분석"}
+      />
       <Chart data={masteryList} />
       <List masteryList={masteryList} />
     </>

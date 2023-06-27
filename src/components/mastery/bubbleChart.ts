@@ -1,6 +1,6 @@
 import { create, hierarchy, pack, range, select, zoom } from "d3";
 import { BubbleChartOption, SvgPatternData } from "@/type/bubbleChart.type";
-import { MasteryFullData } from "@/type/masteryData";
+import { MasteryFullData } from "@/type/masteryData.type";
 
 const bubbleChart = (
   data: MasteryFullData[],
@@ -51,11 +51,9 @@ const bubbleChart = (
 
   const createZoom = () => {
     const g = svg.append("g");
-
     const zoomed = ({ transform }: any) => {
       g.attr("transform", transform);
     };
-
     // @ts-ignore
     svg.call(zoom().scaleExtent([1, 8]).on("zoom", zoomed));
 

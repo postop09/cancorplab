@@ -1,4 +1,4 @@
-import { CustomChampion } from "@/type/championData";
+import { CustomChampion } from "@/type/championData.type";
 
 export type MasteryInfo = {
   championId: number;

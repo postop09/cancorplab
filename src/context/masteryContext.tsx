@@ -1,20 +1,21 @@
 import React, { createContext, useState } from "react";
+import { MasteryFullData } from "@/type/masteryData.type";
 
 interface contextProps {
   children: React.ReactNode | React.ReactNode[];
 }
 
 type Store = {
-  masteryList: never[];
-  setMasteryList: React.Dispatch<React.SetStateAction<never[]>>;
+  masteryList: MasteryFullData[];
+  setMasteryList: React.Dispatch<React.SetStateAction<MasteryFullData[]>>;
 };
 
 const MasteryContext = createContext<Store>({
   masteryList: [],
-  setMasteryList: () => {},
+  setMasteryList: () => [],
 });
 const MasteryProvider = ({ children }: contextProps) => {
-  const [masteryList, setMasteryList] = useState([]);
+  const [masteryList, setMasteryList] = useState<MasteryFullData[]>([]);
 
   const store = {
     masteryList,

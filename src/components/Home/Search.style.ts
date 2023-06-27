@@ -1,36 +1,4 @@
-import styled, { keyframes } from "styled-components";
-
-const borderRole = keyframes`
-  0% {
-    top: 0;
-    left: 0;
-  }
-  40% {
-    top: 0;
-    left: calc(100% - 30px);
-  }
-  50% {
-    top: calc(100% - 30px);
-    left: calc(100% - 30px);
-  }
-  90% {
-    top: calc(100% - 30px);
-    left: 0;
-  }
-  100% {
-    top: 0;
-    left: 0;
-  }
-`;
-
-export const Box = styled.div`
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  background: goldenrod;
-  z-index: 90;
-  animation: ${borderRole} 5s 1s infinite linear;
-`;
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -41,35 +9,6 @@ export const Wrapper = styled.div`
   max-width: 600px;
   width: 100%;
   padding: 4rem 0;
-
-  &::before,
-  &::after {
-    content: "";
-    left: 50%;
-    position: absolute;
-    filter: blur(45px);
-    transform: translateZ(0);
-  }
-
-  &::before {
-    background: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-    border-radius: 50%;
-    width: 480px;
-    height: 360px;
-    margin-left: -400px;
-  }
-
-  &::after {
-    background: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    width: 240px;
-    height: 180px;
-    z-index: -1;
-  }
 `;
 
 export const SearchWrapper = styled.form`
@@ -79,16 +18,9 @@ export const SearchWrapper = styled.form`
   border-radius: 30px;
   width: 100%;
   height: 60px;
-  // animation style
-  //overflow: hidden;
 `;
 
 export const Input = styled.input`
-  // animation style
-  //position: absolute;
-  //top: 50%;
-  //left: 50%;
-  //transform: translate(-50%, -50%);
   border: none;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
@@ -102,21 +34,26 @@ export const Input = styled.input`
 
   &:focus {
     transition: all 0.5s;
-    outline-color: ${({ theme }) => theme.COLOR.original};
+    outline-color: ${({ theme }) => theme.COLOR.borderOrigin};
   }
 `;
 
 export const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   border-left: 1px solid black;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
-  width: 70px;
+  min-width: 60px;
+  padding-right: 5px;
+  color: black;
+  background: ${({ theme }) => theme.COLOR.borderBright};
   cursor: pointer;
-  background: #686868;
 
   &:focus {
     transition: all 0.5s;
-    outline-color: ${({ theme }) => theme.COLOR.original};
+    outline-color: ${({ theme }) => theme.COLOR.borderOrigin};
   }
 `;

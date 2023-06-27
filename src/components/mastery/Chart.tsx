@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { MasteryFullData } from "@/type/masteryData";
-import bubbleChart from "@/components/Mastery/bubbleChart";
+import { MasteryFullData } from "@/type/masteryData.type";
+import bubbleChart from "@/components/mastery/bubbleChart";
 import theme from "@/styles/theme";
 import * as S from "./Chart.style";
 import { HideTitleH2 } from "@/styles/common";
@@ -16,7 +16,7 @@ const Chart = ({ data }: { data: MasteryFullData[] }) => {
 
   const createChart = () => {
     const svg = bubbleChart(data, {
-      stroke: "#daa520",
+      stroke: theme.COLOR.borderOrigin,
       strokeWidth: 1.5,
       width: 1100,
       backgroundColor: theme.COLOR.contents,
