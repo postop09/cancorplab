@@ -45,7 +45,7 @@ const SummonerInfo = ({ data, pathName, title, contents }: props) => {
             <S.AnalysisBtn type="button" title={title}>
               <span className="txt_hover">{contents}</span>
               <span className="txt_normal">
-                <Image src="/icon/caretRight.png" alt="" width={30} height={30} />
+                <Image src="/assets/icon/caretRight.png" alt="" width={30} height={30} />
               </span>
               <span className="txt_opacity">이동</span>
             </S.AnalysisBtn>

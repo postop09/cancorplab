@@ -37,7 +37,13 @@ const Search = () => {
           value={userName}
         />
         <S.Button type="submit">
-          <Image src="/icon/search.png" alt="검색" width={30} height={30} />
+          <Image
+            src="/assets/icon/search.png"
+            alt="검색"
+            width={30}
+            height={30}
+            priority={true}
+          />
         </S.Button>
       </S.SearchWrapper>
     </S.Wrapper>
