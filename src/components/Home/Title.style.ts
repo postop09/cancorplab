@@ -6,7 +6,7 @@ export const TitleWrapper = styled.section`
   align-items: inherit;
   width: 100%;
   font-size: ${({ theme }) => theme.SIZE.sm};
-  z-index: 2;
+  z-index: 100;
   @media screen and (max-width: ${({ theme }) => theme.WIDTH.mid}) {
     position: fixed;
     inset: 0 0 auto;

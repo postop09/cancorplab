@@ -43,7 +43,7 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none;
+  border: inherit;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   min-width: 60px;

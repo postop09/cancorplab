@@ -45,6 +45,7 @@ export const AnalysisBtn = styled.button`
   background: none;
   overflow: hidden;
   transition: all 0.2s;
+  color: white;
 
   &:hover {
     background-color: ${({ theme }) => theme.COLOR.txtStrong};

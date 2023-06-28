@@ -5,6 +5,7 @@ import Chart from "@/components/mastery/Chart";
 import Head from "next/head";
 import List from "@/components/mastery/List";
 import SummonerInfo from "@/components/mastery/SummonerInfo";
+import { BgWrapper } from "@/styles/common";
 
 const Index = () => {
   const router = useRouter();

@@ -19,6 +19,7 @@ export const BtnShowList = styled.button`
   border-radius: ${({ theme }) => theme.ROUND.sm};
   padding: 0.5rem 1rem;
   font-size: 1rem;
+  color: white;
   background: ${({ theme }) => theme.COLOR.contents};
 `;
 

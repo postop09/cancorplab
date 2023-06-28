@@ -39,7 +39,7 @@ const ROUND = {
 const WIDTH = {
   pc: "1100px",
   mid: "800px",
-  mobile: "420px",
+  mobile: "480px",
 };
 
 const theme = {

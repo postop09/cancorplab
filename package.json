@@ -7,8 +7,8 @@
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "aws s3 sync .next s3://lol-champ-cancorp --profile=yun_can",
-    "invalidation": "aws cloudfront create-invalidation --distribution-id E3MRDWCRJO0JAT --paths /*"
+    "deploy": "aws s3 sync out s3://lol-champ-cancorp --profile=yun_can",
+    "invalidation": "aws cloudfront create-invalidation --distribution-id E3MRDWCRJO0JAT --paths \"/*\""
   },
   "dependencies": {
     "@types/d3": "^7.4.0",
