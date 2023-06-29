@@ -22,6 +22,7 @@ export const SearchWrapper = styled.form`
 
 export const Input = styled.input`
   border: none;
+  border-radius: 0;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   width: 100%;
@@ -32,7 +33,6 @@ export const Input = styled.input`
   letter-spacing: 3px;
   z-index: 10;
   background-color: ${({ theme }) => theme.COLOR.borderContents};
-
   &:focus {
     transition: all 0.5s;
     outline-color: ${({ theme }) => theme.COLOR.borderOrigin};
@@ -43,15 +43,17 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: inherit;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-  min-width: 60px;
+  border-top-right-radius: ${({ theme }) => theme.ROUND.lg};
+  border-bottom-right-radius: ${({ theme }) => theme.ROUND.lg};
+  width: 70px;
+  height: 100%;
   padding-right: 5px;
   color: black;
   //background: #3b3b3b;
   background-color: ${({ theme }) => theme.COLOR.borderContents};
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
 
   &:focus {
     transition: all 0.5s;

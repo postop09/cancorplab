@@ -34,6 +34,9 @@ export const SubTxt = styled.p`
     border: none;
     border-radius: 0;
     width: 100%;
+    font-size: ${({ theme }) => theme.SIZE.sm};
+    padding-right: 0;
+    text-align: right;
     background: none;
   }
 `;

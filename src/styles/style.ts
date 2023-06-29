@@ -29,6 +29,10 @@ const GlobalStyle = createGlobalStyle`
     border: 0;
     font-size: 16px;
     vertical-align: baseline;
+    color: white;
+    @media screen and (max-width: 480px) {
+      font-size: 14px;
+    }
   }
 
   /* HTML5 display-role reset for older browsers */

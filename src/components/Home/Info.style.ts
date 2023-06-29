@@ -34,23 +34,22 @@ export const Card = styled.li`
     transition: transform 0.2s;
   }
 
-  h2 {
+  strong {
+    display: inline-block;
     font-weight: 600;
     margin-bottom: 0.7rem;
   }
 
   p {
-    margin: 0;
     opacity: 0.6;
     font-size: 0.9rem;
     line-height: 1.5;
-    max-width: 30ch;
     word-break: keep-all;
   }
 
   @media screen and (max-width: ${({ theme }) => theme.WIDTH.mid}) {
     padding: 1rem 2.5rem;
-    h2 {
+    strong {
       margin-bottom: 0.5rem;
     }
   }

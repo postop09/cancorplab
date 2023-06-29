@@ -18,7 +18,7 @@ const List = ({ masteryList }: { masteryList: MasteryFullData[] }) => {
           return (
             <S.ItemWrapper key={mastery.championId}>
               <Image
-                src={`/assets/img/${mastery.image.full}`}
+                src={`/assets/img/champion/profile/${mastery.image.full}`}
                 alt=""
                 width={40}
                 height={40}

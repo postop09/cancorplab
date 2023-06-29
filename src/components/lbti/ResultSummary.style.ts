@@ -8,7 +8,8 @@ export const Wrapper = styled.section`
   background-color: ${({ theme }) => theme.COLOR.background};
 
   p {
-    margin-bottom: 1rem;
+    line-height: 2rem;
+    word-break: keep-all;
   }
 
   p:last-child {

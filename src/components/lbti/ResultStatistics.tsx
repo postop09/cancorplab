@@ -15,12 +15,15 @@ const ResultStatistics = ({ data, totalPoints }: Props) => {
 
   return (
     <S.ResultWrapper>
-      <Image
-        src={`/assets/img/champion/loading/${character?.image}`}
-        alt={""}
-        width={308}
-        height={560}
-      />
+      <S.ImgWrapper>
+        <Image
+          src={`/assets/img/champion/loading/${character?.image}`}
+          alt={""}
+          // width={308}
+          // height={560}
+          fill
+        />
+      </S.ImgWrapper>
       <S.DetailWrapper>
         <S.ResultWordWrapper>
           <S.ResultWord>{character?.title}</S.ResultWord>

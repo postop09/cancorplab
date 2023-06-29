@@ -29,18 +29,16 @@ const ResultSummary = ({ data, totalPoints }: Props) => {
       <p>
         <S.SummonerName>{query.summonerName}</S.SummonerName> 소환사님 의 플레이 성향 분석
         결과, 가장 많이 플레이 한 챔피언 유형은 <S.Strong>{maxValueTag.label}</S.Strong>{" "}
-        입니다.
-      </p>
-      <p>
-        소환사님의 전체 숙련도 <S.Strong>{useToLocale(totalPoints)}</S.Strong> 중{" "}
+        입니다. 소환사님의 전체 숙련도 <S.Strong>{useToLocale(totalPoints)}</S.Strong> 중{" "}
         <S.Strong>
           {useToLocale(maxValueTag.value)} (
           {useGetPercentage(maxValueTag.value, totalPoints)}%)
         </S.Strong>{" "}
         를 차지하고 있습니다.
-      </p>
-      <p>
-        가장 적게 플레이 한 챔피언 유형은 <S.Strong>{minValueTag.label}</S.Strong> 이며,{" "}
+        <br />
+        가장 적게 플레이 한 챔피언 유형은 <S.Strong>
+          {minValueTag.label}
+        </S.Strong> 이며,{" "}
         <S.Strong>
           {useToLocale(minValueTag.value)} (
           {useGetPercentage(minValueTag.value, totalPoints)}%)

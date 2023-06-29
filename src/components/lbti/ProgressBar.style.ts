@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
 export const Title = styled.strong`
   min-width: 100px;
   font-size: ${({ theme }) => theme.SIZE.lg};
+  @media screen and (max-width: ${({ theme }) => theme.WIDTH.mid}) {
+    min-width: 70px;
+  }
 `;
 
 export const ProgressWrapper = styled.div`
@@ -19,6 +22,9 @@ export const Progress = styled.div`
   width: 100%;
   height: 20px;
   background-color: ${({ theme }) => theme.COLOR.backgroundGrey};
+  @media screen and (max-width: ${({ theme }) => theme.WIDTH.mid}) {
+    height: 18px;
+  }
 `;
 
 export const Dealt = styled.div<{ dealt: number }>`

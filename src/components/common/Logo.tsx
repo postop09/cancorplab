@@ -30,4 +30,9 @@ const H1 = styled.h1`
 const SiteName = styled.span`
   font-size: 1.8rem;
   font-weight: bold;
+  transition: color 0.15s;
+
+  &:hover {
+    color: ${({ theme }) => theme.COLOR.txtStrong};
+  }
 `;

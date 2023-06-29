@@ -8,6 +8,16 @@ export const ResultWrapper = styled.div`
   }
 `;
 
+export const ImgWrapper = styled.div`
+  position: relative;
+  width: 308px;
+  height: 560px;
+  @media screen and (max-width: ${({ theme }) => theme.WIDTH.mobile}) {
+    width: 270px;
+    height: 504px;
+  }
+`;
+
 export const DetailWrapper = styled.div`
   border: 2px solid ${({ theme }) => theme.COLOR.borderContents};
   border-radius: ${({ theme }) => theme.ROUND.md};
@@ -16,7 +26,7 @@ export const DetailWrapper = styled.div`
   height: 560px;
   padding: 2rem 1rem;
   @media screen and (max-width: ${({ theme }) => theme.WIDTH.mid}) {
-    height: 430px;
+    height: 350px;
     padding: 1rem 0.5rem;
   }
 `;
