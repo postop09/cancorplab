@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import useGetMastery from "@/hooks/useGetMastery";
 import SummonerInfo from "@/components/mastery/SummonerInfo";
 import AnalysisResult from "@/components/lbti/AnalysisResult";
+import useKakaoShare from "@/hooks/common/useKakaoShare";
 
 const Index = () => {
   const router = useRouter();
   const { query } = router;
   const { masteryList } = useGetMastery(query.summoner as string);
+  const { shareKakao } = useKakaoShare();
+
+  // useEffect(() => {
+  //   shareKakao("#kakaotalk-sharing-btn");
+  // }, []);
 
   return (
     <>
@@ -27,6 +33,9 @@ const Index = () => {
         contents={"통계 보기"}
       />
       <AnalysisResult masteryList={masteryList} />
+      <a id="kakaotalk-sharing-btn" onClick={shareKakao}>
+        zz
+      </a>
     </>
   );
 };

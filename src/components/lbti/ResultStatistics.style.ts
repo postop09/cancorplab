@@ -10,10 +10,10 @@ export const ResultWrapper = styled.div`
 
 export const ImgWrapper = styled.div`
   position: relative;
-  width: 308px;
+  min-width: 308px;
   height: 560px;
   @media screen and (max-width: ${({ theme }) => theme.WIDTH.mobile}) {
-    width: 270px;
+    min-width: 270px;
     height: 504px;
   }
 `;
@@ -33,7 +33,7 @@ export const DetailWrapper = styled.div`
 
 export const ResultWordWrapper = styled.div`
   display: block;
-  height: 80px;
+  margin-bottom: 1rem;
   padding: 0 1rem;
 `;
 
