@@ -6,12 +6,6 @@ export const Wrapper = styled.section`
   margin-top: 1rem;
   padding: 1rem;
   background-color: ${({ theme }) => theme.COLOR.background};
-
-  p {
-    line-height: 2rem;
-    word-break: keep-all;
-  }
-
   p:last-child {
     margin-bottom: 0;
   }

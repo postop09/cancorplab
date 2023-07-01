@@ -37,6 +37,11 @@ export const ScoreWrapper = styled.div`
   }
 `;
 
+export const ShareWrapper = styled.div`
+  display: inline-block;
+  margin-right: 1rem;
+`;
+
 export const AnalysisBtn = styled.button`
   position: relative;
   border: 2px solid ${({ theme }) => theme.COLOR.borderBright};

@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import * as S from "./Search.style";
 import useGetSummoner from "@/hooks/useGetSummoner";
 import { useRouter } from "next/router";
@@ -8,17 +8,24 @@ const Search = () => {
   const { getSummoner, userName, setUserName } = useGetSummoner();
   const router = useRouter();
 
+  useEffect(() => {
+    if (router.query.summonerName) {
+      const querySummonerName = router.query.summonerName.toString();
+      handleSearch(undefined, querySummonerName);
+    }
+  }, [router.query]);
+
   // TODO - 두글자 이하일 경우 검색 불가능
-  const handleSearch = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSearch = async (e?: FormEvent<HTMLFormElement>, summonerName?: string) => {
+    if (e) e.preventDefault();
     try {
-      const summoner = await getSummoner();
+      const summoner = await getSummoner(summonerName);
       if (summoner) {
         await router.push({
           pathname: "/lbti",
           query: {
             summoner: summoner.id,
-            summonerName: userName,
+            summonerName,
           },
         });
       }
@@ -29,7 +36,7 @@ const Search = () => {
 
   return (
     <S.Wrapper>
-      <S.SearchWrapper onSubmit={handleSearch}>
+      <S.SearchWrapper onSubmit={(e) => handleSearch(e, userName)}>
         <S.Input
           type="search"
           placeholder="소환사 이름을 검색해주세요."

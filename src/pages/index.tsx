@@ -54,6 +54,10 @@ const Wrapper = styled.div`
     z-index: -1;
   }
 
+  @media screen and (max-width: ${({ theme }) => theme.WIDTH.mid}) {
+    justify-content: center;
+  }
+
   @media screen and (max-width: ${({ theme }) => theme.WIDTH.mobile}) {
     padding: 6rem 1rem;
   }
