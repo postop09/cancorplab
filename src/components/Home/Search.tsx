@@ -11,12 +11,12 @@ const Search = () => {
   useEffect(() => {
     if (router.query.summonerName) {
       const querySummonerName = router.query.summonerName.toString();
-      handleSearch(undefined, querySummonerName);
+      handleSearch(querySummonerName);
     }
   }, [router.query]);
 
   // TODO - 두글자 이하일 경우 검색 불가능
-  const handleSearch = async (e?: FormEvent<HTMLFormElement>, summonerName?: string) => {
+  const handleSearch = async (summonerName: string, e?: FormEvent<HTMLFormElement>) => {
     if (e) e.preventDefault();
     try {
       const summoner = await getSummoner(summonerName);
@@ -36,7 +36,7 @@ const Search = () => {
 
   return (
     <S.Wrapper>
-      <S.SearchWrapper onSubmit={(e) => handleSearch(e, userName)}>
+      <S.SearchWrapper onSubmit={(e) => handleSearch(userName, e)}>
         <S.Input
           type="search"
           placeholder="소환사 이름을 검색해주세요."
