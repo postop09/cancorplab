@@ -10,15 +10,15 @@ const useKakaoShare = () => {
     }
   }, []);
 
-  const shareKakao = () => {
+  const shareKakao = (title: string, description: string) => {
     const kakao = window.Kakao;
     const queryString = router.asPath.split("?");
 
     kakao.Share.sendCustom({
       templateId: 95526,
       templateArgs: {
-        title: "제목 영역입니다. 이거야",
-        description: "설명 영역입니다. 아앙 기모띠? 이거죠? 뚜따뚜다?",
+        title,
+        description,
         query: `?${queryString[1]}`,
       },
     });
