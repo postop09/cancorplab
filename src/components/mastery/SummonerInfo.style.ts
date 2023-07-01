@@ -40,6 +40,9 @@ export const ScoreWrapper = styled.div`
 export const ShareWrapper = styled.div`
   display: inline-block;
   margin-right: 1rem;
+  @media screen and (max-width: ${({ theme }) => theme.WIDTH.mobile}) {
+    margin-right: 0.5rem;
+  }
 `;
 
 export const AnalysisBtn = styled.button`
@@ -86,5 +89,9 @@ export const AnalysisBtn = styled.button`
 
   .txt_opacity {
     opacity: 0;
+  }
+
+  @media screen and (max-width: ${({ theme }) => theme.WIDTH.mobile}) {
+    padding: 1.4rem;
   }
 `;
