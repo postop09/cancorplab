@@ -12,10 +12,6 @@ const Index = () => {
   const { masteryList } = useGetMastery(query.summoner as string);
   const { shareKakao } = useKakaoShare();
 
-  // useEffect(() => {
-  //   shareKakao("#kakaotalk-sharing-btn");
-  // }, []);
-
   return (
     <>
       <Head>

@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React, { FormEvent, useEffect } from "react";
 import * as S from "./Search.style";
 import useGetSummoner from "@/hooks/useGetSummoner";
 import { useRouter } from "next/router";
@@ -8,9 +8,22 @@ const Search = () => {
   const { getSummoner, userName, setUserName } = useGetSummoner();
   const router = useRouter();
 
+  useEffect(() => {
+    if (router.query.summonerName) {
+      const querySummonerName = router.query.summonerName.toString();
+      setUserName(querySummonerName);
+    }
+  }, [router.query]);
+
+  useEffect(() => {
+    if (userName) {
+      handleSearch();
+    }
+  }, [userName]);
+
   // TODO - 두글자 이하일 경우 검색 불가능
-  const handleSearch = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSearch = async (e?: FormEvent<HTMLFormElement>) => {
+    if (e) e.preventDefault();
     try {
       const summoner = await getSummoner();
       if (summoner) {
