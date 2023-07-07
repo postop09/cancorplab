@@ -4,12 +4,9 @@ import Chart from "@/components/mastery/Chart";
 import Head from "next/head";
 import List from "@/components/mastery/List";
 import SummonerInfo from "@/components/mastery/SummonerInfo";
-import { useRouter } from "next/router";
 
 const Index = () => {
-  const router = useRouter();
-  const { query } = router;
-  const { masteryList } = useGetMastery(query.summoner as string);
+  const { masteryList } = useGetMastery();
   // TODO - button 이벤트로 챔피언 플레이 리스트 show ON/OFF
   //  내 성향 분석하기? 태그별 차트 보여주기?
   return (

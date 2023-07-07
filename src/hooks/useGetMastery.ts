@@ -5,19 +5,23 @@ import { CustomChampion } from "@/type/championData.type";
 import { MasteryFullData } from "@/type/masteryData.type";
 import useFilterObject from "@/hooks/common/useFilterObject";
 
-const useGetMastery = (id: string) => {
+const useGetMastery = () => {
   const [masteryList, setMasteryList] = useState<MasteryFullData[]>([]);
 
   useEffect(() => {
-    if (id) {
-      combineChampionAndMasteryList();
+    const summonerId = window.sessionStorage.getItem("summonerId");
+    if (summonerId) {
+      combineChampionAndMasteryList(summonerId);
     }
-  }, [id]);
+  }, []);
 
-  const combineChampionAndMasteryList = async () => {
+  const combineChampionAndMasteryList = async (id: string) => {
     let result: MasteryFullData[] = [];
-    const masteryList = await getMasteryList();
     const championList = getChampionList();
+    const { data: masteryList } = await customAxios(
+      "get",
+      `/champion-mastery/v4/champion-masteries/by-summoner/${id}`,
+    );
 
     if (masteryList) {
       for (let mastery of masteryList) {
@@ -28,15 +32,6 @@ const useGetMastery = (id: string) => {
       }
     }
     setMasteryList(result);
-  };
-
-  const getMasteryList = async () => {
-    const res = await customAxios(
-      "get",
-      `/champion-mastery/v4/champion-masteries/by-summoner/${id}`,
-    );
-
-    return res && res.data;
   };
 
   const getChampionList = (): CustomChampion[] => {

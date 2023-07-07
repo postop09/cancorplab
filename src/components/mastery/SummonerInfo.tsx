@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import * as S from "./SummonerInfo.style";
 import { HideTitleH2 } from "@/styles/common";
-import { useRouter } from "next/router";
 import { MasteryFullData } from "@/type/masteryData.type";
 import useSumMasteryPoint from "@/hooks/common/useSumMasteryPoint";
 import Link from "next/link";
@@ -9,6 +8,7 @@ import Image from "next/image";
 import useToLocale from "@/hooks/common/useToLocale";
 import useKakaoShare from "@/hooks/common/useKakaoShare";
 import { CharacterContext } from "@/context/CharacterContext";
+import useGetSummonerName from "@/hooks/useGetSummonerName";
 
 type props = {
   data: MasteryFullData[];
@@ -18,16 +18,15 @@ type props = {
 };
 
 const SummonerInfo = ({ data, pathName, title, contents }: props) => {
-  const router = useRouter();
-  const { query } = router;
   const { shareKakao } = useKakaoShare();
   const { character } = useContext(CharacterContext);
+  const { summonerName } = useGetSummonerName();
 
   return (
     <S.Wrapper>
       <HideTitleH2>소환사 정보</HideTitleH2>
       <S.InfoWrapper>
-        <S.UserName>{query.summonerName}</S.UserName>
+        <S.UserName>{summonerName}</S.UserName>
         <S.ScoreWrapper>
           <dt>챔피언 숙련도 점수</dt>
           <dd>
@@ -54,15 +53,7 @@ const SummonerInfo = ({ data, pathName, title, contents }: props) => {
               <span className="txt_opacity">이동</span>
             </S.AnalysisBtn>
           </S.ShareWrapper>
-          <Link
-            href={{
-              pathname: pathName,
-              query: {
-                summoner: query.summoner,
-                summonerName: query.summonerName,
-              },
-            }}
-          >
+          <Link href={pathName}>
             <S.AnalysisBtn type="button" title={title}>
               <span className="txt_hover">{contents}</span>
               <span className="txt_normal">
