@@ -3,13 +3,12 @@ import * as S from "./SummonerInfo.style";
 import { HideTitleH2 } from "@/styles/common";
 import { useRouter } from "next/router";
 import { MasteryFullData } from "@/type/masteryData.type";
-import useSumMasteryPoint from "@/hooks/useSumMasteryPoint";
+import useSumMasteryPoint from "@/hooks/common/useSumMasteryPoint";
 import Link from "next/link";
 import Image from "next/image";
 import useToLocale from "@/hooks/common/useToLocale";
 import useKakaoShare from "@/hooks/common/useKakaoShare";
 import { CharacterContext } from "@/context/CharacterContext";
-import { ShareWrapper } from "./SummonerInfo.style";
 
 type props = {
   data: MasteryFullData[];
@@ -23,7 +22,6 @@ const SummonerInfo = ({ data, pathName, title, contents }: props) => {
   const { query } = router;
   const { shareKakao } = useKakaoShare();
   const { character } = useContext(CharacterContext);
-  console.log(character);
 
   return (
     <S.Wrapper>

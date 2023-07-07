@@ -1,7 +1,7 @@
 import { MasteryFullData } from "@/type/masteryData.type";
 import { AnalysisDataType, TagsEnum } from "@/type/analysisData.type";
-import useSumMasteryPoint from "@/hooks/useSumMasteryPoint";
-import useFilterObject from "@/hooks/useFilterObject";
+import useSumMasteryPoint from "@/hooks/common/useSumMasteryPoint";
+import useFilterObject from "@/hooks/common/useFilterObject";
 
 interface Tags {
   tags: string[];

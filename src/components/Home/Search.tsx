@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { FormEvent, useEffect } from "react";
 import * as S from "./Search.style";
 import useGetSummoner from "@/hooks/useGetSummoner";
 import { useRouter } from "next/router";
@@ -18,6 +18,7 @@ const Search = () => {
   // TODO - 두글자 이하일 경우 검색 불가능
   const handleSearch = async (summonerName: string, e?: FormEvent<HTMLFormElement>) => {
     if (e) e.preventDefault();
+    if (summonerName.length < 2) return alert("2글자 이상 검색해주세요.");
     try {
       const summoner = await getSummoner(summonerName);
       if (summoner) {

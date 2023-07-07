@@ -1,11 +1,10 @@
 import React from "react";
-import { useRouter } from "next/router";
 import useGetMastery from "@/hooks/useGetMastery";
 import Chart from "@/components/mastery/Chart";
 import Head from "next/head";
 import List from "@/components/mastery/List";
 import SummonerInfo from "@/components/mastery/SummonerInfo";
-import { BgWrapper } from "@/styles/common";
+import { useRouter } from "next/router";
 
 const Index = () => {
   const router = useRouter();
