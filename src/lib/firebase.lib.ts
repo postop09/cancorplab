@@ -1,6 +1,3 @@
-// import firebase, { initializeApp } from "firebase/app";
-// import "firebase/analytics";
-// import { getAnalytics } from "@firebase/analytics";
 import firebase from "firebase/compat/app";
 import "firebase/compat/analytics";
 
@@ -17,18 +14,18 @@ const firebaseConfig = {
 // 개발모드
 firebase.initializeApp(firebaseConfig);
 
-export const setFirebaseUserProperties = (
-  comName: string,
-  adminNo: number,
-  adminName: string,
-) => {
-  firebase.analytics().setUserProperties({
-    comName,
-    adminNo,
-    adminName,
-  });
-};
-
 export const analyticsLogEvent = (key: string, params?: {}) => {
   firebase.analytics().logEvent(key, params);
 };
+
+// export const setFirebaseUserProperties = (
+//   comName: string,
+//   adminNo: number,
+//   adminName: string,
+// ) => {
+//   firebase.analytics().setUserProperties({
+//     comName,
+//     adminNo,
+//     adminName,
+//   });
+// };

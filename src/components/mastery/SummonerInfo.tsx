@@ -9,6 +9,8 @@ import useToLocale from "@/hooks/common/useToLocale";
 import useKakaoShare from "@/hooks/common/useKakaoShare";
 import { CharacterContext } from "@/context/CharacterContext";
 import useGetSummonerName from "@/hooks/useGetSummonerName";
+import { analyticsLogEvent } from "@/lib/firebase.lib";
+import { EVENT_COMMON } from "@/const/EVENT_NAMES";
 
 type props = {
   data: MasteryFullData[];
@@ -39,7 +41,10 @@ const SummonerInfo = ({ data, pathName, title, contents }: props) => {
           <S.ShareWrapper>
             <S.AnalysisBtn
               type="button"
-              onClick={() => shareKakao(character!.title, character!.contents)}
+              onClick={() => {
+                analyticsLogEvent(EVENT_COMMON.share);
+                shareKakao(character!.title, character!.contents);
+              }}
             >
               <span className="txt_hover">공유하기</span>
               <span className="txt_normal">
@@ -54,7 +59,11 @@ const SummonerInfo = ({ data, pathName, title, contents }: props) => {
             </S.AnalysisBtn>
           </S.ShareWrapper>
           <Link href={pathName}>
-            <S.AnalysisBtn type="button" title={title}>
+            <S.AnalysisBtn
+              type="button"
+              title={title}
+              onClick={() => analyticsLogEvent(EVENT_COMMON.move, { path: pathName })}
+            >
               <span className="txt_hover">{contents}</span>
               <span className="txt_normal">
                 <Image src="/assets/icon/caretRight.png" alt="" width={30} height={30} />

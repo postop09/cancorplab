@@ -1,4 +1,5 @@
 export const EVENT_COMMON = {
+  page: "home",
   share: "btn_share",
   move: "btn_move_page",
 };
