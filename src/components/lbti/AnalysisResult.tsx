@@ -1,7 +1,7 @@
 import React from "react";
 import { MasteryFullData } from "@/type/masteryData.type";
 import useGetAnalysisData from "@/hooks/useGetAnalysisData";
-import useSumMasteryPoint from "@/hooks/useSumMasteryPoint";
+import useSumMasteryPoint from "@/hooks/common/useSumMasteryPoint";
 import { TAGS } from "@/const/TAGS";
 import * as S from "./AnalysisResult.style";
 import { HideTitleH2 } from "@/styles/common";

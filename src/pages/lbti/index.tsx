@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import useGetMastery from "@/hooks/useGetMastery";
 import SummonerInfo from "@/components/mastery/SummonerInfo";
 import AnalysisResult from "@/components/lbti/AnalysisResult";
+import useAnalyticsPage from "@/hooks/common/useAnalyticsPage";
+import { EVENT_LBTI } from "@/const/EVENT_NAMES";
 
 const Index = () => {
-  const router = useRouter();
-  const { query } = router;
-  const { masteryList } = useGetMastery(query.summoner as string);
+  const { masteryList } = useGetMastery();
+  useAnalyticsPage(EVENT_LBTI.page);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { FormEvent, useEffect } from "react";
 import * as S from "./Search.style";
 import useGetSummoner from "@/hooks/useGetSummoner";
 import { useRouter } from "next/router";
@@ -15,19 +15,15 @@ const Search = () => {
     }
   }, [router.query]);
 
-  // TODO - 두글자 이하일 경우 검색 불가능
   const handleSearch = async (summonerName: string, e?: FormEvent<HTMLFormElement>) => {
     if (e) e.preventDefault();
+    if (summonerName.length < 2) return alert("2글자 이상 검색해주세요.");
     try {
       const summoner = await getSummoner(summonerName);
       if (summoner) {
-        await router.push({
-          pathname: "/lbti",
-          query: {
-            summoner: summoner.id,
-            summonerName,
-          },
-        });
+        await router.push("/lbti");
+        window.sessionStorage.setItem("summonerId", summoner.id);
+        window.sessionStorage.setItem("summonerName", summoner.name);
       }
     } catch (err) {
       alert("일치하는 소환사가 없습니다.");

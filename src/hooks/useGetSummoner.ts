@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import customAxios from "@/lib/customAxios";
-import { useRouter } from "next/router";
+import { SummonerInfo } from "@/type/summonerInfo.type";
 
 const useGetSummoner = () => {
   const [userName, setUserName] = useState("");
 
-  const getSummoner = async (userName: string) => {
+  const getSummoner = async (userName: string): Promise<SummonerInfo> => {
     const res = await customAxios("get", `/summoner/v4/summoners/by-name/${userName}`);
 
     return res && res.data;

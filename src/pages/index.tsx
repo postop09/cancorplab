@@ -3,8 +3,12 @@ import Search from "@/components/Home/Search";
 import Title from "@/components/Home/Title";
 import Info from "@/components/Home/Info";
 import styled from "styled-components";
+import useAnalyticsPage from "@/hooks/common/useAnalyticsPage";
+import { EVENT_COMMON } from "@/const/EVENT_NAMES";
 
 export default function Home() {
+  useAnalyticsPage(EVENT_COMMON.page);
+
   return (
     <>
       <Head>

@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const useKakaoShare = () => {
-  const router = useRouter();
-
   useEffect(() => {
     if (!window.Kakao.isInitialized()) {
       window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
@@ -12,14 +9,13 @@ const useKakaoShare = () => {
 
   const shareKakao = (title: string, description: string) => {
     const kakao = window.Kakao;
-    const queryString = router.asPath.split("?");
 
     kakao.Share.sendCustom({
       templateId: 95526,
       templateArgs: {
         title,
         description,
-        query: `?${queryString[1]}`,
+        query: `?summonerName=${window.sessionStorage.getItem("summonerName")}`,
       },
     });
   };

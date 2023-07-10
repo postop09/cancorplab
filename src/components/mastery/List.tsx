@@ -3,11 +3,14 @@ import { MasteryFullData } from "@/type/masteryData.type";
 import * as S from "@/components/mastery/List.style";
 import Image from "next/image";
 import { HideTitleH2 } from "@/styles/common";
+import { analyticsLogEvent } from "@/lib/firebase.lib";
+import { EVENT_MASTERY } from "@/const/EVENT_NAMES";
 
 const List = ({ masteryList }: { masteryList: MasteryFullData[] }) => {
   const [isShow, setIsShow] = useState(false);
 
   const showList = () => {
+    analyticsLogEvent(EVENT_MASTERY.more, { isShow: isShow ? "닫기" : "더보기" });
     setIsShow((prev) => !prev);
   };
 
