@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
+    "s-build": "npm run build && rm -rf out/assets",
     "start": "next start",
     "lint": "next lint",
     "deploy": "aws s3 sync out s3://lol-champ-cancorp --profile=yun_can",
