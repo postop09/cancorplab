@@ -33,6 +33,7 @@ export const Input = styled.input`
   letter-spacing: 3px;
   z-index: 10;
   background-color: ${({ theme }) => theme.COLOR.borderContents};
+  color: white;
   &:focus {
     transition: all 0.5s;
     outline-color: ${({ theme }) => theme.COLOR.borderOrigin};
