@@ -19,7 +19,6 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:image" content="/assets/img/seo/ogImage.png" />
-        <link rel="icon" href="" />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6130554803659144"
