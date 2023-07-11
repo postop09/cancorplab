@@ -4,6 +4,7 @@ import * as S from "./ResultStatistics.style";
 import ProgressBar from "@/components/lbti/ProgressBar";
 import { SumByTagsData } from "@/type/result.type";
 import useAnalysisCharacter from "@/hooks/useAnalysisCharacter";
+import RadarChart from "@/components/lbti/RadarChart";
 
 type Props = {
   data: SumByTagsData[];
@@ -42,6 +43,7 @@ const ResultStatistics = ({ data, totalPoints }: Props) => {
             );
           })}
         </S.Ul>
+        <RadarChart />
       </S.DetailWrapper>
     </S.ResultWrapper>
   );
