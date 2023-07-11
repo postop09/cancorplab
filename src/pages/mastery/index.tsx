@@ -16,11 +16,6 @@ const Index = () => {
     <>
       <Head>
         <title>롤챔 | CANLab</title>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6130554803659144"
-          crossOrigin="anonymous"
-        ></script>
       </Head>
       <SummonerInfo
         data={masteryList}

@@ -1,10 +1,10 @@
-import Head from "next/head";
 import Search from "@/components/Home/Search";
 import Title from "@/components/Home/Title";
 import Info from "@/components/Home/Info";
 import styled from "styled-components";
 import useAnalyticsPage from "@/hooks/common/useAnalyticsPage";
 import { EVENT_COMMON } from "@/const/EVENT_NAMES";
+import Head from "next/head";
 
 export default function Home() {
   useAnalyticsPage(EVENT_COMMON.page);
@@ -13,17 +13,7 @@ export default function Home() {
     <>
       <Head>
         <title>롤챔 | CANLab</title>
-        <meta
-          name="description"
-          content="롤챔은 리그오브레전드 플레이 정보와 관련된 통계 그래프, 재미로 보는 성향분석 LBTI 까지. lol과 관련된 재미있는 정보를 얻을 수 있는 공간입니다."
-        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:image" content="/assets/img/seo/ogImage.png" />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6130554803659144"
-          crossOrigin="anonymous"
-        ></script>
       </Head>
       <Wrapper>
         <Title />
