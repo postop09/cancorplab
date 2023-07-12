@@ -49,7 +49,7 @@ const RadarChart = ({ data, label }: Props) => {
     scales: {
       r: {
         ticks: {
-          display: false, // Hides the labels in the middel (numbers)
+          display: false,
         },
         pointLabels: {
           color: "#fff",
