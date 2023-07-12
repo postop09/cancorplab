@@ -16,7 +16,7 @@ const AnalysisResult = ({ masteryList }: Props) => {
   return (
     <S.Wrapper>
       <HideTitleH2>성향 분석 결과</HideTitleH2>
-      <ResultStatistics data={SUM_BY_TAGS} totalPoints={SUM_OF_ALL_TAGS} />
+      <ResultStatistics data={SUM_BY_TAGS} />
       <ResultSummary data={SUM_BY_TAGS} totalPoints={SUM_OF_ALL_TAGS} />
     </S.Wrapper>
   );
