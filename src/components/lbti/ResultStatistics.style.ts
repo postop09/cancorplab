@@ -22,6 +22,7 @@ export const DetailWrapper = styled.div`
   border: 2px solid ${({ theme }) => theme.COLOR.borderContents};
   border-radius: ${({ theme }) => theme.ROUND.md};
   background-color: ${({ theme }) => theme.COLOR.contents};
+  //background-color: white;
   width: 100%;
   height: 560px;
   padding: 2rem 1rem;

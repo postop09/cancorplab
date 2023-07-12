@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import * as S from "./ResultStatistics.style";
-import ProgressBar from "@/components/lbti/ProgressBar";
 import { SumByTagsData } from "@/type/result.type";
 import useAnalysisCharacter from "@/hooks/useAnalysisCharacter";
 import RadarChart from "@/components/lbti/RadarChart";
@@ -26,24 +25,24 @@ const ResultStatistics = ({ data, totalPoints }: Props) => {
         />
       </S.ImgWrapper>
       <S.DetailWrapper>
-        <S.ResultWordWrapper>
-          <S.ResultWord>{character?.title}</S.ResultWord>
-          <S.ResultContents>"{character?.subtitle}"</S.ResultContents>
-        </S.ResultWordWrapper>
-        <S.Ul>
-          {data.map((item, index) => {
-            return (
-              <li key={index}>
-                <ProgressBar
-                  label={item.label}
-                  numerator={item.value}
-                  denominator={totalPoints}
-                />
-              </li>
-            );
-          })}
-        </S.Ul>
-        <RadarChart />
+        {/*<S.ResultWordWrapper>*/}
+        {/*  <S.ResultWord>{character?.title}</S.ResultWord>*/}
+        {/*  <S.ResultContents>"{character?.subtitle}"</S.ResultContents>*/}
+        {/*</S.ResultWordWrapper>*/}
+        {/*<S.Ul>*/}
+        {/*  {data.map((item, index) => {*/}
+        {/*    return (*/}
+        {/*      <li key={index}>*/}
+        {/*        <ProgressBar*/}
+        {/*          label={item.label}*/}
+        {/*          numerator={item.value}*/}
+        {/*          denominator={totalPoints}*/}
+        {/*        />*/}
+        {/*      </li>*/}
+        {/*    );*/}
+        {/*  })}*/}
+        {/*</S.Ul>*/}
+        <RadarChart data={data} />
       </S.DetailWrapper>
     </S.ResultWrapper>
   );
