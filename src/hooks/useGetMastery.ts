@@ -5,13 +5,15 @@ import { CustomChampion } from "@/type/championData.type";
 import { MasteryFullData } from "@/type/masteryData.type";
 import useFilterObject from "@/hooks/common/useFilterObject";
 
-const useGetMastery = () => {
+const useGetMastery = (isEffect?: "noUseEffect") => {
   const [masteryList, setMasteryList] = useState<MasteryFullData[]>([]);
 
   useEffect(() => {
-    const summonerId = window.sessionStorage.getItem("summonerId");
-    if (summonerId) {
-      combineChampionAndMasteryList(summonerId);
+    if (!isEffect) {
+      const summonerId = window.sessionStorage.getItem("summonerId");
+      if (summonerId) {
+        combineChampionAndMasteryList(summonerId);
+      }
     }
   }, []);
 
@@ -32,6 +34,7 @@ const useGetMastery = () => {
       }
     }
     setMasteryList(result);
+    return result;
   };
 
   const getChampionList = (): CustomChampion[] => {
@@ -39,7 +42,7 @@ const useGetMastery = () => {
     return useFilterObject(CHAMPION.data, necessaryKeys);
   };
 
-  return { masteryList };
+  return { masteryList, combineChampionAndMasteryList };
 };
 
 export default useGetMastery;

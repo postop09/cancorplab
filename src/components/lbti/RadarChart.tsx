@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Chart as ChartJS,
+  Colors,
   Filler,
   Legend,
   LineElement,
@@ -12,28 +13,35 @@ import { Radar } from "react-chartjs-2";
 import styled from "styled-components";
 import { SumByTagsData } from "@/type/result.type";
 
-ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
+ChartJS.register(
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend,
+  Colors,
+);
 
-const RadarChart = ({ data }: { data: SumByTagsData[] }) => {
-  const labels = data && data.map((tag) => tag.label);
-  const chartData = data && data.map((tag) => tag.value);
+type Props = {
+  data: SumByTagsData[][];
+  label: string[];
+};
 
-  console.log(chartData);
+const RadarChart = ({ data, label }: Props) => {
+  const labels = ["전사", "마법사", "탱커", "암살자", "서포터", "명사수"];
+  const generateData = (wholeData: SumByTagsData[]) => {
+    return wholeData.map((tag) => tag.value);
+  };
+  const generateDatasets = () => {
+    return data.map((item, i) => {
+      return { label: label[i], data: generateData(item) };
+    });
+  };
 
   const dataset = {
     labels: labels,
-    datasets: [
-      {
-        label: "나",
-        data: chartData,
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
-        borderColor: "rgba(255, 99, 132, 1)",
-        pointBorderColor: "#fff",
-        pointHoverBorderColor: "rgb(255, 99, 132)",
-        pointBackgroundColor: "rgb(255, 99, 132)",
-        pointHoverBackgroundColor: "#fff",
-      },
-    ],
+    datasets: generateDatasets(),
   };
 
   const options = {
@@ -51,11 +59,16 @@ const RadarChart = ({ data }: { data: SumByTagsData[] }) => {
         },
       },
     },
+    plugins: {
+      colors: {
+        forceOverride: true,
+      },
+    },
   };
 
   return (
     <Wrapper>
-      <Radar data={dataset} height={"auto"} options={options} />
+      <Radar data={dataset} options={options} height={"auto"} />
     </Wrapper>
   );
 };
