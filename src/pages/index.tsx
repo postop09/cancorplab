@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>롤챔 | CANLab</title>
+        <title>롤 숙련도 검색 롤챔 | CANLab</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Wrapper>
