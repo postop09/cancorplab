@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import * as Search from "@/components/Home/Search.style";
 
 export const ResultWrapper = styled.div`
   display: flex;
@@ -19,39 +20,57 @@ export const ImgWrapper = styled.div`
 `;
 
 export const DetailWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 2px solid ${({ theme }) => theme.COLOR.borderContents};
   border-radius: ${({ theme }) => theme.ROUND.md};
   background-color: ${({ theme }) => theme.COLOR.contents};
   width: 100%;
   height: 560px;
-  padding: 2rem 1rem;
+  padding: 1rem;
   @media screen and (max-width: ${({ theme }) => theme.WIDTH.mid}) {
-    height: 350px;
-    padding: 1rem 0.5rem;
+    max-height: 400px;
+    padding: 0.5rem;
   }
 `;
 
-export const ResultWordWrapper = styled.div`
-  display: block;
-  margin-bottom: 1rem;
-  padding: 0 1rem;
+export const SearchWrapper = styled(Search.SearchWrapper)`
+  border: 2px solid ${({ theme }) => theme.COLOR.borderOrigin};
+  max-width: 400px;
+  height: 40px;
+  margin: auto;
+  @media screen and (max-width: ${({ theme }) => theme.WIDTH.mid}) {
+    max-width: 300px;
+    height: 35px;
+  }
 `;
 
-export const ResultWord = styled.strong`
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: ${({ theme }) => theme.SIZE.xxl};
-  color: ${({ theme }) => theme.COLOR.borderOrigin};
+export const SearchInput = styled(Search.Input)`
+  font-size: ${({ theme }) => theme.SIZE.sm};
 `;
 
-export const ResultContents = styled.p`
-  font-size: ${({ theme }) => theme.SIZE.lg};
-`;
-
-export const Ul = styled.ul`
+export const SearchButton = styled.button`
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: calc(100% - 80px);
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  background-color: ${({ theme }) => theme.COLOR.borderContents};
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+
+  &:focus {
+    transition: all 0.5s;
+    outline-color: ${({ theme }) => theme.COLOR.borderOrigin};
+  }
+`;
+
+export const ResetButton = styled(Search.Button)`
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  width: 40px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
 `;

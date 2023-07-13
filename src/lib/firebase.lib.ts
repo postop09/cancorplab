@@ -11,7 +11,6 @@ const firebaseConfig = {
   measurementId: "G-HSMH9CLLJ9",
 };
 
-// 개발모드
 firebase.initializeApp(firebaseConfig);
 
 export const analyticsLogEvent = (key: string, params?: {}) => {
