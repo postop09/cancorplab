@@ -3,6 +3,8 @@ import * as S from "./Search.style";
 import useGetSummoner from "@/hooks/useGetSummoner";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { analyticsLogEvent } from "@/lib/firebase.lib";
+import { EVENT_COMMON } from "@/const/EVENT_NAMES";
 
 const Search = () => {
   const { getSummoner, userName, setUserName } = useGetSummoner();
@@ -18,6 +20,7 @@ const Search = () => {
   const handleSearch = async (summonerName: string, e?: FormEvent<HTMLFormElement>) => {
     if (e) e.preventDefault();
     if (summonerName.length < 2) return alert("2글자 이상 검색해주세요.");
+    analyticsLogEvent(EVENT_COMMON.search);
     try {
       const summoner = await getSummoner(summonerName);
       if (summoner) {
