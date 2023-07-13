@@ -47,7 +47,7 @@ export const SearchWrapper = styled(Search.SearchWrapper)`
 `;
 
 export const SearchInput = styled(Search.Input)`
-  font-size: 1rem;
+  font-size: ${({ theme }) => theme.SIZE.sm};
 `;
 
 export const SearchButton = styled.button`

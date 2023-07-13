@@ -27,6 +27,7 @@ const ResultStatistics = ({ data }: Props) => {
             type="search"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
+            placeholder={"비교대상을 검색해주세요."}
           />
           <S.SearchButton type="submit">
             <Image
