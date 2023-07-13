@@ -12,7 +12,8 @@ type Props = {
 
 const ResultStatistics = ({ data }: Props) => {
   const { character } = useAnalysisCharacter(data);
-  const { dataList, label, setUserName, handleSearch } = useSearchComparison(data);
+  const { dataList, label, userName, setUserName, handleSearch, handleReset } =
+    useSearchComparison(data);
 
   return (
     <S.ResultWrapper>
@@ -20,28 +21,26 @@ const ResultStatistics = ({ data }: Props) => {
         <Image src={`/assets/img/champion/loading/${character?.image}`} alt={""} fill />
       </S.ImgWrapper>
       <S.DetailWrapper>
-        <form onSubmit={handleSearch}>
-          <input type="text" onChange={(e) => setUserName(e.target.value)} />
-          <button type="submit">검색</button>
-        </form>
-        {/*<S.ResultWordWrapper>*/}
-        {/*  <S.ResultWord>{character?.title}</S.ResultWord>*/}
-        {/*  <S.ResultContents>"{character?.subtitle}"</S.ResultContents>*/}
-        {/*</S.ResultWordWrapper>*/}
-        {/*<S.Ul>*/}
-        {/*  {data.map((item, index) => {*/}
-        {/*    return (*/}
-        {/*      <li key={index}>*/}
-        {/*        <ProgressBar*/}
-        {/*          label={item.label}*/}
-        {/*          numerator={item.value}*/}
-        {/*          denominator={totalPoints}*/}
-        {/*        />*/}
-        {/*      </li>*/}
-        {/*    );*/}
-        {/*  })}*/}
-        {/*</S.Ul>*/}
         <RadarChart data={dataList} label={label} />
+        <S.SearchWrapper onSubmit={handleSearch}>
+          <S.SearchInput
+            type="search"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+          <S.SearchButton type="submit">
+            <Image
+              src="/assets/icon/search.png"
+              alt="검색"
+              width={24}
+              height={24}
+              priority={true}
+            />
+          </S.SearchButton>
+          <S.ResetButton type="reset" onClick={handleReset} title={"초기화"}>
+            C
+          </S.ResetButton>
+        </S.SearchWrapper>
       </S.DetailWrapper>
     </S.ResultWrapper>
   );

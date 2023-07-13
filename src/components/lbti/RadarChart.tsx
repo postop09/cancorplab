@@ -68,7 +68,7 @@ const RadarChart = ({ data, label }: Props) => {
 
   return (
     <Wrapper>
-      <Radar data={dataset} options={options} height={"auto"} />
+      <Radar data={dataset} options={options} width={"auto"} height={"auto"} />
     </Wrapper>
   );
 };
@@ -76,6 +76,10 @@ const RadarChart = ({ data, label }: Props) => {
 export default RadarChart;
 
 const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 430px;
+  height: fit-content;
+  margin: auto;
+  @media screen and (max-width: ${({ theme }) => theme.WIDTH.mid}) {
+    width: 300px;
+  }
 `;

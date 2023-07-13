@@ -31,12 +31,18 @@ const useSearchComparison = (data: SumByTagsData[]) => {
       const { SUM_BY_TAGS } = useGetStatisticsData(masteryList);
       setLabel((prev) => [...prev, userName]);
       setDataList((prev) => [...prev, SUM_BY_TAGS]);
+      setUserName("");
     } catch (err) {
       alert("일치하는 소환사가 없습니다.");
     }
   };
 
-  return { dataList, label, setUserName, handleSearch };
+  const handleReset = () => {
+    setDataList([data]);
+    setLabel((prev) => [prev[0]]);
+  };
+
+  return { dataList, label, userName, setUserName, handleSearch, handleReset };
 };
 
 export default useSearchComparison;
