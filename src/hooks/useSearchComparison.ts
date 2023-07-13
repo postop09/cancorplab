@@ -3,6 +3,8 @@ import { SumByTagsData } from "@/type/result.type";
 import useGetStatisticsData from "@/hooks/useGetStatisticsData";
 import useGetSummoner from "@/hooks/useGetSummoner";
 import useGetMastery from "@/hooks/useGetMastery";
+import { analyticsLogEvent } from "@/lib/firebase.lib";
+import { EVENT_LBTI } from "@/const/EVENT_NAMES";
 
 const useSearchComparison = (data: SumByTagsData[]) => {
   const [dataList, setDataList] = useState<SumByTagsData[][]>([]);
@@ -25,6 +27,7 @@ const useSearchComparison = (data: SumByTagsData[]) => {
     if (e) e.preventDefault();
     if (userName.length < 2) return alert("2글자 이상 검색해주세요.");
     if (label.includes(userName)) return alert("이미 존재하는 소환사 입니다.");
+    analyticsLogEvent(EVENT_LBTI.search);
     try {
       const summoner = await getSummoner(userName);
       const masteryList = await combineChampionAndMasteryList(summoner.id);
@@ -38,6 +41,7 @@ const useSearchComparison = (data: SumByTagsData[]) => {
   };
 
   const handleReset = () => {
+    analyticsLogEvent(EVENT_LBTI.reset);
     setDataList([data]);
     setLabel((prev) => [prev[0]]);
   };
