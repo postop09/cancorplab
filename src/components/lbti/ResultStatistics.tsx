@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import * as S from "./ResultStatistics.style";
 import { SumByTagsData } from "@/type/result.type";
 import useAnalysisCharacter from "@/hooks/useAnalysisCharacter";
 import RadarChart from "@/components/lbti/RadarChart";
 import useSearchComparison from "@/hooks/useSearchComparison";
+import * as S from "./ResultStatistics.style";
 
 type Props = {
   data: SumByTagsData[];
@@ -18,7 +18,11 @@ const ResultStatistics = ({ data }: Props) => {
   return (
     <S.ResultWrapper>
       <S.ImgWrapper>
-        <Image src={`/assets/img/champion/loading/${character?.image}`} alt={""} fill />
+        <Image
+          src={`/assets/img/champion/loading/${character?.image}`}
+          alt=""
+          fill
+        />
       </S.ImgWrapper>
       <S.DetailWrapper>
         <RadarChart data={dataList} label={label} />
@@ -27,7 +31,7 @@ const ResultStatistics = ({ data }: Props) => {
             type="search"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
-            placeholder={"비교대상을 검색해주세요."}
+            placeholder="비교대상을 검색해주세요."
           />
           <S.SearchButton type="submit">
             <Image
@@ -35,10 +39,10 @@ const ResultStatistics = ({ data }: Props) => {
               alt="검색"
               width={24}
               height={24}
-              priority={true}
+              priority
             />
           </S.SearchButton>
-          <S.ResetButton type="reset" onClick={handleReset} title={"초기화"}>
+          <S.ResetButton type="reset" onClick={handleReset} title="초기화">
             C
           </S.ResetButton>
         </S.SearchWrapper>

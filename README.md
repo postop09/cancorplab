@@ -77,7 +77,9 @@ eslintrc 설정
     "react/no-array-index-key": 1,
     "react/no-unstable-nested-components": 1,
     "react-hooks/exhaustive-deps": 1,
-    "jsx-a11y/label-has-associated-control": 1
+    "jsx-a11y/label-has-associated-control": 1,
+    "consistent-return": 1,
+    "@typescript-eslint/ban-ts-comment": 1
   }
 }
 ```

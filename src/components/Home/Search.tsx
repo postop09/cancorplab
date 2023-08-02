@@ -1,23 +1,19 @@
 import React, { FormEvent, useEffect } from "react";
-import * as S from "./Search.style";
-import useGetSummoner from "@/hooks/useGetSummoner";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import useGetSummoner from "@/hooks/useGetSummoner";
 import { analyticsLogEvent } from "@/lib/firebase.lib";
 import { EVENT_COMMON } from "@/const/EVENT_NAMES";
+import * as S from "./Search.style";
 
 const Search = () => {
   const { getSummoner, userName, setUserName } = useGetSummoner();
   const router = useRouter();
 
-  useEffect(() => {
-    if (router.query.summonerName) {
-      const querySummonerName = router.query.summonerName.toString();
-      handleSearch(querySummonerName);
-    }
-  }, [router.query]);
-
-  const handleSearch = async (summonerName: string, e?: FormEvent<HTMLFormElement>) => {
+  const handleSearch = async (
+    summonerName: string,
+    e?: FormEvent<HTMLFormElement>,
+  ) => {
     if (e) e.preventDefault();
     if (summonerName.length < 2) return alert("2글자 이상 검색해주세요.");
     analyticsLogEvent(EVENT_COMMON.search);
@@ -32,6 +28,13 @@ const Search = () => {
       alert("일치하는 소환사가 없습니다.");
     }
   };
+
+  useEffect(() => {
+    if (router.query.summonerName) {
+      const querySummonerName = router.query.summonerName.toString();
+      handleSearch(querySummonerName);
+    }
+  }, [router.query]);
 
   return (
     <S.Wrapper>
@@ -48,7 +51,7 @@ const Search = () => {
             alt="검색"
             width={30}
             height={30}
-            priority={true}
+            priority
           />
         </S.Button>
       </S.SearchWrapper>

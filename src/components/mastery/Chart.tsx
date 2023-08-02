@@ -2,17 +2,11 @@ import React, { useEffect, useRef } from "react";
 import { MasteryFullData } from "@/type/masteryData.type";
 import bubbleChart from "@/components/mastery/bubbleChart";
 import theme from "@/styles/theme";
-import * as S from "./Chart.style";
 import { HideTitleH2 } from "@/styles/common";
+import * as S from "./Chart.style";
 
 const Chart = ({ data }: { data: MasteryFullData[] }) => {
   const svgRef = useRef(null);
-
-  useEffect(() => {
-    if (data.length !== 0) {
-      createChart();
-    }
-  }, [data]);
 
   const createChart = () => {
     const svg = bubbleChart(data, {
@@ -21,7 +15,6 @@ const Chart = ({ data }: { data: MasteryFullData[] }) => {
       height: 880,
       backgroundColor: theme.COLOR.contents,
     });
-
     // @ts-ignore
     if (!svgRef.current.childNodes.length) {
       // @ts-ignore
@@ -29,11 +22,17 @@ const Chart = ({ data }: { data: MasteryFullData[] }) => {
     }
   };
 
+  useEffect(() => {
+    if (data.length !== 0) {
+      createChart();
+    }
+  }, [data]);
+
   return (
     <section>
       <HideTitleH2>플레이 챔피언 별 숙련도 통계</HideTitleH2>
       <S.SvgWrapper>
-        <div ref={svgRef}></div>
+        <div ref={svgRef} />
         <S.CountWrapper>
           <S.Count>{data.length}</S.Count>
           <S.CountTxt>플레이 챔피언</S.CountTxt>

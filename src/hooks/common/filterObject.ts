@@ -1,5 +1,8 @@
-const useFilterObject = <T, L>(list: L[] | {}, necessaryKeys: string[]): T[] => {
-  let result: T[] = [];
+const filterObject = <T, L>(
+  list: L[] | object,
+  necessaryKeys: string[],
+): T[] => {
+  const result: T[] = [];
 
   Object.entries(list).forEach(([_, value]: [string, any]) => {
     const customData = necessaryKeys.reduce((result: any, key: string) => {
@@ -12,4 +15,4 @@ const useFilterObject = <T, L>(list: L[] | {}, necessaryKeys: string[]): T[] => 
   return result;
 };
 
-export default useFilterObject;
+export default filterObject;

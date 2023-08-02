@@ -1,24 +1,20 @@
-import customAxios from "@/lib/customAxios";
 import { useEffect, useState } from "react";
-import CHAMPION from "../data/champion.json";
+import customAxios from "@/lib/customAxios";
 import { CustomChampion } from "@/type/championData.type";
 import { MasteryFullData } from "@/type/masteryData.type";
-import useFilterObject from "@/hooks/common/useFilterObject";
+import filterObject from "@/hooks/common/filterObject";
+import CHAMPION from "../data/champion.json";
 
 const useGetMastery = (isEffect?: "noUseEffect") => {
   const [masteryList, setMasteryList] = useState<MasteryFullData[]>([]);
 
-  useEffect(() => {
-    if (!isEffect) {
-      const summonerId = window.sessionStorage.getItem("summonerId");
-      if (summonerId) {
-        combineChampionAndMasteryList(summonerId);
-      }
-    }
-  }, []);
+  const getChampionList = (): CustomChampion[] => {
+    const necessaryKeys = ["id", "image", "key", "name", "tags"];
+    return filterObject(CHAMPION.data, necessaryKeys);
+  };
 
   const combineChampionAndMasteryList = async (id: string) => {
-    let result: MasteryFullData[] = [];
+    const result: MasteryFullData[] = [];
     const championList = getChampionList();
     const { data: masteryList } = await customAxios(
       "get",
@@ -26,7 +22,7 @@ const useGetMastery = (isEffect?: "noUseEffect") => {
     );
 
     if (masteryList) {
-      for (let mastery of masteryList) {
+      for (const mastery of masteryList) {
         const championInfo = championList.find((champion) => {
           return +mastery.championId === +champion.key;
         });
@@ -37,10 +33,14 @@ const useGetMastery = (isEffect?: "noUseEffect") => {
     return result;
   };
 
-  const getChampionList = (): CustomChampion[] => {
-    const necessaryKeys = ["id", "image", "key", "name", "tags"];
-    return useFilterObject(CHAMPION.data, necessaryKeys);
-  };
+  useEffect(() => {
+    if (!isEffect) {
+      const summonerId = window.sessionStorage.getItem("summonerId");
+      if (summonerId) {
+        combineChampionAndMasteryList(summonerId);
+      }
+    }
+  }, []);
 
   return { masteryList, combineChampionAndMasteryList };
 };

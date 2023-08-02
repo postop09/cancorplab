@@ -1,11 +1,11 @@
 import useGetAnalysisData from "@/hooks/useGetAnalysisData";
-import useSumMasteryPoint from "@/hooks/common/useSumMasteryPoint";
 import { TAGS } from "@/const/TAGS";
 import { MasteryFullData } from "@/type/masteryData.type";
+import sumMasteryPoint from "@/hooks/common/sumMasteryPoint";
 
 const useGetStatisticsData = (masteryList: MasteryFullData[]) => {
   const { sumByTags } = useGetAnalysisData(masteryList);
-  const SUM_OF_ALL_TAGS = useSumMasteryPoint(masteryList);
+  const SUM_OF_ALL_TAGS = sumMasteryPoint(masteryList);
   const SUM_BY_TAGS = [
     {
       title: "F",
