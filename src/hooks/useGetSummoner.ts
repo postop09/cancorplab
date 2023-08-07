@@ -5,8 +5,11 @@ import { SummonerInfo } from "@/type/summonerInfo.type";
 const useGetSummoner = () => {
   const [userName, setUserName] = useState("");
 
-  const getSummoner = async (userName: string): Promise<SummonerInfo> => {
-    const res = await customAxios("get", `/summoner/v4/summoners/by-name/${userName}`);
+  const getSummoner = async (summonerName: string): Promise<SummonerInfo> => {
+    const res = await customAxios(
+      "get",
+      `/summoner/v4/summoners/by-name/${summonerName}`,
+    );
 
     return res && res.data;
   };

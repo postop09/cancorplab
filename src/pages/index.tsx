@@ -1,10 +1,10 @@
+import styled from "styled-components";
+import Head from "next/head";
 import Search from "@/components/Home/Search";
 import Title from "@/components/Home/Title";
 import Info from "@/components/Home/Info";
-import styled from "styled-components";
 import useAnalyticsPage from "@/hooks/common/useAnalyticsPage";
 import { EVENT_COMMON } from "@/const/EVENT_NAMES";
-import Head from "next/head";
 
 export default function Home() {
   useAnalyticsPage(EVENT_COMMON.page);
@@ -36,7 +36,8 @@ const Wrapper = styled.div`
 
   &::after {
     content: "";
-    background: url(/assets/img/champion/centered/Varus_7.jpg) no-repeat center center;
+    background: url(/assets/img/champion/centered/Varus_7.jpg) no-repeat center
+      center;
     background-size: cover;
     opacity: 0.5;
     position: absolute;

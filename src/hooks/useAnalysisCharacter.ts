@@ -1,6 +1,6 @@
+import { useContext, useEffect } from "react";
 import { SumByTagsData } from "@/type/result.type";
 import CHARACTER from "@/data/typeCharacter.json";
-import { useContext, useEffect } from "react";
 import { CharacterContext } from "@/context/CharacterContext";
 
 type Titles = keyof typeof CHARACTER.data;

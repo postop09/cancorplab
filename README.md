@@ -1,38 +1,119 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# [롤 숙련도 검색 롤챔 | CANLab](https://cancorplab.com/)
+리그오브레전드 API 를 이용하여 소환사의 챔피언 숙련도 점수를 그래프로 보여줍니다.
 
-## Getting Started
+# 개발
+이 프로젝트는 [`create-next-app --typescript`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) 명령어로
+생성된 [Next.js](https://nextjs.org/) 프로젝트입니다.
 
-First, run the development server:
+## 환경
+- Next.js
+- TypeScript
+- Styled-Components
+- d3
+- chart.js
+- Kakao Share API
+- Riot games API
+- AWS S3
+- AWS CloudFront
+- AWS Route 53
+- firebase analytics
+
+
+## 시작하기
+
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 프로젝트 세팅
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+ESLint, Prettier 설치
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+# eslint plug-in 과 parser 설치(eslint 가 이미 설치된 상태라면, eslint 제외)
+npm install -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# Airbnb eslint 설치목록 확인
+npm info "eslint-config-airbnb@latest" peerDependencies
+# peerDependencies 목록
+{
+  eslint: '^7.32.0 || ^8.2.0',
+  'eslint-plugin-import': '^2.25.3',
+  'eslint-plugin-jsx-a11y': '^6.5.1',
+  'eslint-plugin-react': '^7.28.0',
+  'eslint-plugin-react-hooks': '^4.3.0'
+}
+# 위 목록 전부 설치
+npm install -D eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# airbnb-config 설치 
+npm install -D eslint-config-airbnb --legacy-peer-deps
 
-## Learn More
+# airbnb-config-typescript 설치
+npm install -D eslint-config-airbnb-typescript
 
-To learn more about Next.js, take a look at the following resources:
+# Prettier 설치 및 eslint 규칙 충돌 해결
+npm install -D prettier eslint-config-prettier eslint-plugin-prettier
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+eslintrc 설정
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```json
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb/hooks",
+    "airbnb-typescript",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "import/prefer-default-export": 0,
+    "import/no-extraneous-dependencies": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/prefer-stateless-function": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/require-default-props": 0,
+    "no-nested-ternary": 0,
+    "array-callback-return": 1,
+    "react/function-component-definition": 0,
+    "func-style": [
+      "error",
+      "expression"
+    ],
+    "react/no-array-index-key": 1,
+    "react/no-unstable-nested-components": 1,
+    "react-hooks/exhaustive-deps": 1,
+    "jsx-a11y/label-has-associated-control": 1,
+    "consistent-return": 1,
+    "@typescript-eslint/ban-ts-comment": 1
+  }
+}
+```
 
-## Deploy on Vercel
+prettierrc 설정
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```json
+{
+  "parser": "typescript",
+  "semi": true,
+  "trailingComma": "all",
+  "singleQuote": false,
+  "printWidth": 80,
+  "useTabs": false,
+  "tabWidth": 2,
+  "bracketSpacing": true
+}
+```

@@ -1,7 +1,7 @@
 import { MasteryFullData } from "@/type/masteryData.type";
 import { AnalysisDataType, TagsEnum } from "@/type/analysisData.type";
-import useSumMasteryPoint from "@/hooks/common/useSumMasteryPoint";
-import useFilterObject from "@/hooks/common/useFilterObject";
+import sumMasteryPoint from "@/hooks/common/sumMasteryPoint";
+import filterObject from "@/hooks/common/filterObject";
 
 interface Tags {
   tags: string[];
@@ -10,7 +10,7 @@ interface Tags {
 const useGetAnalysisData = (masteryList: MasteryFullData[]) => {
   const getListFilteredByTags = (): AnalysisDataType[] => {
     const necessaryKeys = ["championId", "championPoints", "name", "tags"];
-    return useFilterObject(masteryList, necessaryKeys);
+    return filterObject(masteryList, necessaryKeys);
   };
 
   const filterTags = <T extends Tags>(list: T[], tagName: TagsEnum) => {
@@ -19,7 +19,7 @@ const useGetAnalysisData = (masteryList: MasteryFullData[]) => {
 
   const sumByTags = (tagName: TagsEnum) => {
     const tagsData = filterTags(getListFilteredByTags(), tagName);
-    return useSumMasteryPoint(tagsData);
+    return sumMasteryPoint(tagsData);
   };
 
   return { sumByTags };

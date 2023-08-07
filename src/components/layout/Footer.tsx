@@ -1,7 +1,7 @@
 import React from "react";
-import * as S from "./Footer.style";
 import { HideTitleH2 } from "@/styles/common";
 import Logo from "@/components/common/Logo";
+import * as S from "./Footer.style";
 
 const Footer = () => {
   return (

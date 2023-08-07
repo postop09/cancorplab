@@ -1,7 +1,7 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useMemo, useState } from "react";
 import { Character } from "@/type/result.type";
 
-interface contextProps {
+interface ContextProps {
   children: React.ReactNode | React.ReactNode[];
 }
 
@@ -14,15 +14,23 @@ const CharacterContext = createContext<Store>({
   character: undefined,
   setCharacter: () => {},
 });
-const CharacterProvider = ({ children }: contextProps) => {
+
+const CharacterProvider = ({ children }: ContextProps) => {
   const [character, setCharacter] = useState<Character>();
 
-  const store = {
-    character,
-    setCharacter,
-  };
+  const store = useMemo(
+    () => ({
+      character,
+      setCharacter,
+    }),
+    [],
+  );
 
-  return <CharacterContext.Provider value={store}>{children}</CharacterContext.Provider>;
+  return (
+    <CharacterContext.Provider value={store}>
+      {children}
+    </CharacterContext.Provider>
+  );
 };
 
 export { CharacterProvider, CharacterContext };

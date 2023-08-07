@@ -17,9 +17,9 @@ const Index = () => {
       </Head>
       <SummonerInfo
         data={masteryList}
-        pathName={"/mastery"}
-        title={"내 통계 보러가기"}
-        contents={"통계 보기"}
+        pathName="/mastery"
+        title="내 통계 보러가기"
+        contents="통계 보기"
       />
       <AnalysisResult masteryList={masteryList} />
     </>

@@ -1,25 +1,25 @@
 import React, { useContext } from "react";
-import * as S from "./SummonerInfo.style";
-import { HideTitleH2 } from "@/styles/common";
-import { MasteryFullData } from "@/type/masteryData.type";
-import useSumMasteryPoint from "@/hooks/common/useSumMasteryPoint";
 import Link from "next/link";
 import Image from "next/image";
+import { HideTitleH2 } from "@/styles/common";
+import { MasteryFullData } from "@/type/masteryData.type";
 import useToLocale from "@/hooks/common/useToLocale";
 import useKakaoShare from "@/hooks/common/useKakaoShare";
 import { CharacterContext } from "@/context/CharacterContext";
 import useGetSummonerName from "@/hooks/useGetSummonerName";
 import { analyticsLogEvent } from "@/lib/firebase.lib";
 import { EVENT_COMMON } from "@/const/EVENT_NAMES";
+import sumMasteryPoint from "@/hooks/common/sumMasteryPoint";
+import * as S from "./SummonerInfo.style";
 
-type props = {
+type Props = {
   data: MasteryFullData[];
   pathName?: string;
   title?: string;
   contents?: string;
 };
 
-const SummonerInfo = ({ data, pathName, title, contents }: props) => {
+const SummonerInfo = ({ data, pathName, title, contents }: Props) => {
   const { shareKakao } = useKakaoShare();
   const { character } = useContext(CharacterContext);
   const { summonerName } = useGetSummonerName();
@@ -32,7 +32,7 @@ const SummonerInfo = ({ data, pathName, title, contents }: props) => {
         <S.ScoreWrapper>
           <dt>챔피언 숙련도 점수</dt>
           <dd>
-            {useToLocale(useSumMasteryPoint(data))} <span>pt</span>
+            {useToLocale(sumMasteryPoint(data))} <span>pt</span>
           </dd>
         </S.ScoreWrapper>
       </S.InfoWrapper>
@@ -62,11 +62,18 @@ const SummonerInfo = ({ data, pathName, title, contents }: props) => {
             <S.AnalysisBtn
               type="button"
               title={title}
-              onClick={() => analyticsLogEvent(EVENT_COMMON.move, { path: pathName })}
+              onClick={() =>
+                analyticsLogEvent(EVENT_COMMON.move, { path: pathName })
+              }
             >
               <span className="txt_hover">{contents}</span>
               <span className="txt_normal">
-                <Image src="/assets/icon/caretRight.png" alt="" width={30} height={30} />
+                <Image
+                  src="/assets/icon/caretRight.png"
+                  alt=""
+                  width={30}
+                  height={30}
+                />
               </span>
               <span className="txt_opacity">이동</span>
             </S.AnalysisBtn>
