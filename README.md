@@ -1,7 +1,26 @@
+# [롤 숙련도 검색 롤챔 | CANLab](https://cancorplab.com/)
+리그오브레전드 API 를 이용하여 소환사의 챔피언 숙련도 점수를 그래프로 보여줍니다.
+
+# 개발
 이 프로젝트는 [`create-next-app --typescript`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) 명령어로
 생성된 [Next.js](https://nextjs.org/) 프로젝트입니다.
 
+## 환경
+- Next.js
+- TypeScript
+- Styled-Components
+- d3
+- chart.js
+- Kakao Share API
+- Riot games API
+- AWS S3
+- AWS CloudFront
+- AWS Route 53
+- firebase analytics
+
+
 ## 시작하기
+
 
 ```bash
 npm run dev
