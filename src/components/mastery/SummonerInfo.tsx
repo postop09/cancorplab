@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { HideTitleH2 } from "@/styles/common";
 import { MasteryFullData } from "@/type/masteryData.type";
-import useToLocale from "@/hooks/common/useToLocale";
+import convertToLocale from "@/hooks/common/convertToLocale";
 import useKakaoShare from "@/hooks/common/useKakaoShare";
 import { CharacterContext } from "@/context/CharacterContext";
 import useGetSummonerName from "@/hooks/useGetSummonerName";
@@ -32,7 +32,7 @@ const SummonerInfo = ({ data, pathName, title, contents }: Props) => {
         <S.ScoreWrapper>
           <dt>챔피언 숙련도 점수</dt>
           <dd>
-            {useToLocale(sumMasteryPoint(data))} <span>pt</span>
+            {convertToLocale(sumMasteryPoint(data))} <span>pt</span>
           </dd>
         </S.ScoreWrapper>
       </S.InfoWrapper>
