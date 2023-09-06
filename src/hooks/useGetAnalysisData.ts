@@ -14,7 +14,7 @@ const useGetAnalysisData = (masteryList: MasteryFullData[]) => {
   };
 
   const filterTags = <T extends Tags>(list: T[], tagName: TagsEnum) => {
-    return list.filter((item) => item.tags.includes(tagName));
+    return list.filter((item) => item.tags?.includes(tagName));
   };
 
   const sumByTags = (tagName: TagsEnum) => {
