@@ -43,7 +43,7 @@ const SummonerInfo = ({ data, pathName, title, contents }: Props) => {
               type="button"
               onClick={() => {
                 analyticsLogEvent(EVENT_COMMON.share);
-                shareKakao(character?.title, character?.contents);
+                shareKakao(character!.title, character!.contents);
               }}
             >
               <span className="txt_hover">공유하기</span>
