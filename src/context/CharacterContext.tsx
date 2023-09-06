@@ -18,13 +18,10 @@ const CharacterContext = createContext<Store>({
 const CharacterProvider = ({ children }: ContextProps) => {
   const [character, setCharacter] = useState<Character>();
 
-  const store = useMemo(
-    () => ({
-      character,
-      setCharacter,
-    }),
-    [],
-  );
+  const store = {
+    character,
+    setCharacter,
+  }
 
   return (
     <CharacterContext.Provider value={store}>
