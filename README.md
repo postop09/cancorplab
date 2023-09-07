@@ -144,12 +144,20 @@ prettierrc 설정
 - createSVG 함수를 통해 svg root frame 정의
 - createZoom 함수를 통해 svg 에 줌 기능 추가
 - createTranslate 함수를 통해 각 원(콘텐츠)의 좌표설정
-- 
+- defineImg 함수를 통해 출력 이미지 할당 및 이미지 경로 설정
+- createImg 함수를 통해 이미지 맵핑 및 스타일 설정, 출력
+- showChampionInfo 함수를 통해 챔피언 숙련도 세부 정보 출력
+- 위 생성된 정보를 바탕으로 return svg;
 
 ### 챔피언 숙련도 점수 순위로 보기
 
 ![ezgif com-video-to-gif (3)](https://github.com/postop09/cancorplab/assets/93017923/82c72172-fa7b-4447-bb13-7a00d98b5f59)
+- 맵핑한 챔피언 숙련도 점수를 순서대로 나열
 
 ### 검색 결과 카카오톡 공유하기
 
 ![image](https://github.com/postop09/cancorplab/assets/93017923/55497525-90a8-48b3-8f1d-bea6aaf75b35)
+- Kakao Dev -> message template api 서비스 이용
+- message template 에서 정보 입력 및 커스텀 query 설정
+- 페이지에서 카카오톡 공유 시, 분석 결과의 title, description, query 값을 전달
+- "결과 보기" 버튼 클릭 시, query 값을 이용하여 공유한 결과 페이지로 이동
