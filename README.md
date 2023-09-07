@@ -117,3 +117,39 @@ prettierrc 설정
   "bracketSpacing": true
 }
 ```
+
+## 기능
+
+### 소환사 검색
+
+![ezgif com-video-to-gif](https://github.com/postop09/cancorplab/assets/93017923/fdba7c65-26a5-4370-bd36-213d5d74075a)
+- 소환사 닉네임 검색
+- 소환사 encryptedId 획득 및 재사용을 위해 세션스토리지 저장
+- encryptedId 로 숙련도 정보 api 호출, 챔피언 json 데이터에서 필요한 정보만 필터링 및 맵핑
+- 챔피언 데이터에서 역할군을 기준으로 숙련도 점수 필터링 및 합산 -> Radar 차트 결과 출력
+- 정의한 성향 기준 json 을 바탕으로 위에서 가공한 데이터와 필터링 -> 성향 결과 출력
+
+### 소환사 비교 검색
+
+![ezgif com-video-to-gif (1)](https://github.com/postop09/cancorplab/assets/93017923/4e3ac162-6c8a-427d-9116-378bc7cacd6d)
+- 검색 Hook 을 이용하여 최초 소환사 검색과 동일한 로직 수행
+- 호출 후 가공한 데이터(위와 동일한 로직)를 차트 데이터에 배열 형태로 전달
+- 비교 그래프 출력
+
+### 버블차트로 숙련도 별 챔피언 보기
+
+![ezgif com-video-to-gif (2)](https://github.com/postop09/cancorplab/assets/93017923/370d5210-5078-4381-9662-8dce92bc6478)
+- d3 의 bubbleChart 참고
+- 각 챔피언의 숙련도 점수, 이미지 등 기타 정보 맵핑
+- createSVG 함수를 통해 svg root frame 정의
+- createZoom 함수를 통해 svg 에 줌 기능 추가
+- createTranslate 함수를 통해 각 원(콘텐츠)의 좌표설정
+- 
+
+### 챔피언 숙련도 점수 순위로 보기
+
+![ezgif com-video-to-gif (3)](https://github.com/postop09/cancorplab/assets/93017923/82c72172-fa7b-4447-bb13-7a00d98b5f59)
+
+### 검색 결과 카카오톡 공유하기
+
+![image](https://github.com/postop09/cancorplab/assets/93017923/55497525-90a8-48b3-8f1d-bea6aaf75b35)
