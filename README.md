@@ -136,7 +136,7 @@ prettierrc 설정
 - 호출 후 가공한 데이터(위와 동일한 로직)를 차트 데이터에 배열 형태로 전달
 - 비교 그래프 출력
 
-### 버블차트로 숙련도 별 챔피언 보기
+### [버블차트로 숙련도 별 챔피언 보기](src/components/mastery/bubbleChart.ts)
 
 ![ezgif com-video-to-gif (2)](https://github.com/postop09/cancorplab/assets/93017923/370d5210-5078-4381-9662-8dce92bc6478)
 - d3 의 bubbleChart 참고
