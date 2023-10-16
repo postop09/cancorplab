@@ -13,7 +13,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-export const analyticsLogEvent = (key: string, params?: {}) => {
+export const analyticsLogEvent = (key: string, params?: object) => {
   firebase.analytics().logEvent(key, params);
 };
 

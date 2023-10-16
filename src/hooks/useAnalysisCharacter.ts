@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import { Character, SumByTagsData } from "@/type/result.type";
+import { useContext, useEffect } from "react";
+import { SumByTagsData } from "@/type/result.type";
 import CHARACTER from "@/data/typeCharacter.json";
 import { CharacterContext } from "@/context/CharacterContext";
 
@@ -11,7 +11,7 @@ const useAnalysisCharacter = (array: SumByTagsData[]) => {
   const joinedTitle = sortedValue.map((tag) => tag.title).join("") as Titles;
 
   useEffect(() => {
-    setCharacter(CHARACTER.data[joinedTitle])
+    setCharacter(CHARACTER.data[joinedTitle]);
   }, [array]);
 
   return { character };
