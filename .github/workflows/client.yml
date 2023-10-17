@@ -26,3 +26,8 @@ jobs:
 
       - name: Deploy project
         run: aws s3 sync out s3://lol-champ-cancorp
+
+      - name: CloudFront Invalidation
+        env:
+          CLOUD_FRONT_ID: ${{ secrets.AWS_CLOUDFRONT_ID}}
+        run: aws cloudfront create-invalidation --distribution-id $CLOUD_FRONT_ID --paths /*
