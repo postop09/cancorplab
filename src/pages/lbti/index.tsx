@@ -1,10 +1,16 @@
 import React from "react";
 import Head from "next/head";
 import useGetMastery from "@/hooks/useGetMastery";
-import SummonerInfo from "@/components/mastery/SummonerInfo";
-import AnalysisResult from "@/components/lbti/AnalysisResult";
 import useAnalyticsPage from "@/hooks/common/useAnalyticsPage";
 import { EVENT_LBTI } from "@/const/EVENT_NAMES";
+import dynamic from "next/dynamic";
+
+const AnalysisResult = dynamic(() => import("@/components/lbti/AnalysisResult"), {
+  ssr: false,
+});
+const SummonerInfo = dynamic(() => import("@/components/mastery/SummonerInfo"), {
+  ssr: false,
+});
 
 const Index = () => {
   const { masteryList } = useGetMastery();

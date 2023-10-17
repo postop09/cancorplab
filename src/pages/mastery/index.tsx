@@ -1,11 +1,19 @@
 import React from "react";
 import Head from "next/head";
 import useGetMastery from "@/hooks/useGetMastery";
-import Chart from "@/components/mastery/Chart";
-import List from "@/components/mastery/List";
-import SummonerInfo from "@/components/mastery/SummonerInfo";
 import useAnalyticsPage from "@/hooks/common/useAnalyticsPage";
 import { EVENT_MASTERY } from "@/const/EVENT_NAMES";
+import dynamic from "next/dynamic";
+
+const SummonerInfo = dynamic(() => import("@/components/mastery/SummonerInfo"), {
+  ssr: false,
+});
+const Chart = dynamic(() => import("@/components/mastery/Chart"), {
+  ssr: false,
+});
+const List = dynamic(() => import("@/components/mastery/List"), {
+  ssr: false,
+});
 
 const Index = () => {
   const { masteryList } = useGetMastery();
