@@ -25,7 +25,7 @@ jobs:
           aws-region: ap-northeast-2
 
       - name: Deploy project
-        run: aws s3 sync out s3://lol-champ-cancorp
+        run: aws s3 sync ./out s3://lol-champ-cancorp
 
       - name: CloudFront Invalidation
         env:
