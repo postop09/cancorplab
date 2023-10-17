@@ -6,7 +6,7 @@ const Title = () => {
   return (
     <S.TitleWrapper>
       <Logo />
-      <S.SubTxt>롤챔 Version 1.0.2</S.SubTxt>
+      <S.SubTxt>롤챔 Version 1.0.3</S.SubTxt>
     </S.TitleWrapper>
   );
 };
